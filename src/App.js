@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Header from './components/Header/Header';
+import EstimateForm from './components/Form/EstimateForm';
+import Services from './components/Services/Services';
+import Gallery from './components/Gallery/Gallery';
+import Reviews from './components/Reviews/Reviews';
+import Footer from './components/Footer/Footer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  <div className="app">
+    <Header />
+    <main>
+      <section className="estimate-section">
+        <h2>Request a Free Estimate</h2>
+        <EstimateForm />
+      </section>
+      <Services />
+      <Gallery />
+      <Reviews />
+    </main>
+    <Footer />
+  </div>
+};
 
 export default App;
+
+
+
+
+
+
+
+
+
+
