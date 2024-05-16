@@ -8,7 +8,8 @@ import Reviews from './components/Reviews/Reviews';
 import Footer from './components/Footer/Footer';
 
 function App() {
-  <div className="app">
+  return(
+  <div className="header">
     <Header />
     <main>
       <section className="estimate-section">
@@ -21,6 +22,7 @@ function App() {
     </main>
     <Footer />
   </div>
+  )
 };
 
 export default App;
