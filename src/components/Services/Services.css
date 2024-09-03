@@ -1,0 +1,48 @@
+/* Header*/
+.container-fluid{
+    padding: 0 40px;
+}
+
+.title-header{
+    margin: 0 15 px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.title-line{
+    flex-grow: 1; /* Makes the line expand to fill space */
+    border: 0;
+    height: 1px;
+    background: #000; /* Adjust color as needed */
+}   
+
+/* Ensure the title header is centered */
+.text-center {
+    text-align: center;
+}
+
+/* Services  */
+
+.service-item{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+}
+
+.service-title{
+    margin-top: 10px;
+    font-size: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.service-description{
+    font-size: 1rem;
+}
+
+.service-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+

@@ -1,0 +1,23 @@
+.image-container {
+  position: relative; /* Ensure positioning context */
+  display: inline-block; /* or block, depending on your layout */
+  max-width: 100%; /* Ensure the image doesn't exceed its container's width */
+  width: 100%
+}
+  
+.image-container img {
+  display: block; /* Ensure the image fills its container */
+  width: 100%; /* Make the image fill its container */
+  height: auto; /* Maintain aspect ratio */
+  }
+  
+.image-overlay {
+  position: absolute; /* Position the overlay relative to its container */
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the entire container */
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65));
+  z-index: 500; /* Ensure overlay is below the navbar */
+}
+  

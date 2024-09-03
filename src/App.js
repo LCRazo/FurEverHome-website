@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
+import Navbar from './components/Navbar/NavBar';
+import Header from "C:/Users/lizet/OneDrive/Personal/Work/Websites/roofing-website/src/components/Header/Header.js";
 import EstimateForm from './components/Form/EstimateForm';
 import Services from './components/Services/Services';
 import Gallery from './components/Gallery/Gallery';
@@ -10,19 +11,21 @@ import Footer from './components/Footer/Footer';
 function App() {
   return(
   <div className="header">
-    <Header />
+    <Navbar/>
+    <Header/>
     <main>
-      <section className="estimate-section">
-        <h2>Request a Free Estimate</h2>
+      <section className="estimate-section d-flex justify-content-center align-items-center">
+        <div className="text-center">
         <EstimateForm />
+        </div>
       </section>
       <Services />
       <Gallery />
-      <Reviews />
+      {/* <Reviews /> */}
     </main>
-    <Footer />
+    {/* <Footer /> */}
   </div>
-  )
+  );
 };
 
 export default App;
