@@ -1,0 +1,24 @@
+.footer-container {
+    background-color: #000;
+}
+
+.footer-container h4{
+    color: #fff;
+}
+
+.footer-container p{
+    color: #545557 ;
+}
+
+.about-us{
+    max-width: 350px;
+}
+.social-media a{
+    font-size: 20px;
+    color: #fff;
+    padding-right: 15px;
+}
+
+.copyright {
+    font-size: small;
+}
