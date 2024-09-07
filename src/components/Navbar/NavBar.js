@@ -9,10 +9,8 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 function Navbar(){
   return (
     //Responsive NavBar
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">
-        <img src="your-logo.png" alt="Your Logo" style={{ width: '40px' }} /> {/* Add your logo here */}
-      </a>
+    <nav className="navbar navbar-expand-lg">
+
       {/* ToggleButton */}
       <button
         className="navbar-toggler"

@@ -15,7 +15,7 @@ function App() {
     <main>
       <section className="estimate-section d-flex justify-content-center align-items-center">
         <div className="text-center">
-        <EstimateForm />
+        {/* <EstimateForm /> */}
         </div>
       </section>
       <Services />

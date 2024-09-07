@@ -2,7 +2,7 @@
 .navbar-nav .nav-item:not(:last-child) .nav-link::after {
     content: '';
     display: inline-block;
-    border-left: 1px solid #000;
+    border-left: 1px solid #fff;
     height: 0.8em;
     margin-left: 0.75rem;
   }
@@ -19,20 +19,19 @@
     align-items: center;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight: 530;
-    font-size: 25px;
+    font-size: 18px;
+  }
+
+  .navbar-nav .nav-item a{
+    color: #fff;
   }
 
 /* Adjust the height and padding of the navbar */
 .navbar {
     padding: 1rem; /* Increase the padding to make the navbar thicker */
     height: 80px; /* Set a custom height */
-    position: relative;
+    position: absolute;
     z-index: 5000;  /* Ensure navbar is above other elements */
-  }
-  
-  /* Ensure the navbar-brand aligns with the new navbar height */
-  .navbar-brand img {
-    max-height: 50px; /* Adjust based on the new navbar height */
   }
   
   /* Optionally adjust the padding for the navbar links */
