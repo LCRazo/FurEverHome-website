@@ -5,7 +5,6 @@ import Header from "C:/Users/lizet/OneDrive/Personal/Work/Websites/roofing-websi
 import EstimateForm from './components/Form/EstimateForm';
 import Services from './components/Services/Services';
 import Gallery from './components/Gallery/Gallery';
-import Reviews from './components/Reviews/Reviews';
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
       </section>
       <Services />
       <Gallery />
-      {/* <Reviews /> */}
     </main>
     <Footer />
   </div>
