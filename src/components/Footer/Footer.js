@@ -7,28 +7,31 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function Footer(){
     return(
-        <div className="footer-container pt-5"> 
+        <div className="footer-container container-fluid pt-5"> 
             <div className='text-left footer-content'>
-                <div className='d-flex justify-content-center pr-5'>
+                <div className='d-flex flex-wrap flex-column flex-sm-row justify-content-center'>
                        
-                <div className="footer-section about-us pr-5 ">
+                <div className="footer-section about-us col-12 col-sm-3 mb-4">
                     <h4>About Us</h4>
                         <p>
                             We're your friendly local and family-owned roofing company 
                             with 15+ years of experience delivering superior exterior home 
                             improvement solutions for the RGV.
                         </p>
+                        <div class="d-flex justify-content-right mt-3">
+                            <a type="button" class="btn btn-secondary" href="assets/LizethChavez.pdf" target="_blank" download>Request Free Estimate</a>
+                        </div>
                        
                 </div>
 
-                <div className="footer-section info pr-5 ">
+                <div className="footer-section info col-12 col-sm-4 mb-3 ">
                     <h4>Contact Info</h4>
                         <p>roofing@gmail.com</p>
                         <p>9566623921</p>
                         <p>Office Hours:</p>
                 </div>
 
-                <div className='footer-services pr-5'>
+                <div className='footer-services col-12 col-sm-2 mb-3'>
                     <h4>Services</h4>
                         <p>Roof Installment</p>
                         <p>Roof Repair</p>
@@ -36,7 +39,7 @@ function Footer(){
                         <p>Junk Removal</p>
                 </div>
                 
-                <div className='footer-section social-media'>
+                <div className='footer-section social-media col-12 col-sm-3 mb-3'>
                     <h4>Follow Us</h4>
                         <a href="#"><i className="fa-brands fa-instagram"></i></a>
                         <a href="#"><i className="fa-brands fa-facebook"></i></a>

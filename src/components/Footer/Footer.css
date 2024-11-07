@@ -19,6 +19,18 @@
     padding-right: 15px;
 }
 
+.btn{
+    background-color: #B01F22
+}
 .copyright {
     font-size: small;
+}
+
+/*media query for devices with a screen width of 412px or less*/
+@include media-breakpoint-down(sm) (max-width:412px){
+    footer{
+        padding:10px;
+        font-size: 14px;
+        flex-direction: column;
+    }
 }

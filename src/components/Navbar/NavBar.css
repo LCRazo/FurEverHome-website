@@ -1,39 +1,33 @@
-/* Apply vertical divider to all navbar links */
-.navbar-nav .nav-item:not(:last-child) .nav-link::after {
-    content: '';
-    display: inline-block;
-    border-left: 1px solid #000;
-    height: 0.8em;
-    margin-left: 0.75rem;
-  }
+/* npm */
   
   /* Ensure dropdown items are styled correctly without extra spacing */
   .navbar-nav .dropdown-menu .dropdown-item::after {
     display: none;
     z-index: 1050;/* Ensure dropdown is above the navbar */
   }
-  
+
   /* Additional styling to remove unwanted spacing and ensure correct alignment */
   .navbar-nav .nav-item {
     display: flex;
     align-items: center;
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight: 530;
-    font-size: 25px;
+    font-size: 18px;
+  }
+
+  .navbar-nav .nav-item a{
+    color: #fff;
+    font-size: auto;
   }
 
 /* Adjust the height and padding of the navbar */
 .navbar {
     padding: 1rem; /* Increase the padding to make the navbar thicker */
     height: 80px; /* Set a custom height */
-    position: relative;
+    position: absolute;
     z-index: 5000;  /* Ensure navbar is above other elements */
   }
-  
-  /* Ensure the navbar-brand aligns with the new navbar height */
-  .navbar-brand img {
-    max-height: 50px; /* Adjust based on the new navbar height */
-  }
+
   
   /* Optionally adjust the padding for the navbar links */
   .navbar-nav .nav-item .nav-link {
