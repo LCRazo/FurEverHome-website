@@ -1,4 +1,8 @@
 import React from 'react';
+import Junk from '../assets/junk-removal.jpg'
+import Repair from '../assets/roof-repair.jpg'
+import Replace from '../assets/roof-replacement.jpg'
+import Install from '../assets/roof-installation.jpg'
 import './Services.css';
 
 
@@ -16,33 +20,33 @@ function Services(){
                 </div>
                 <div class="col-sm mx-2">
                     <div className="service-item">
-                    <img src="path of img" alt="Roof Installment" className="img-fluid"/>
+                    <img src={Install} alt="Roof Installment" className="img-fluid"/>
                         <h3 className="service-title text-left">Roof Installment</h3>
-                        <p className="service-description text-left">Description/Price</p>
+                        <p className="service-description text-left">From selecting the best materials to completing a flawless installation, we prioritize quality and customer satisfaction every step of the way.</p>
                     </div>
                 </div>
 
                 <div class="col-sm mx-2">
                     <div className="service-item">
-                        <img src="path of img" alt="Roof Repair" className="img-fluid"/>
+                        <img src={Repair} alt="Roof Repair" className="img-fluid"/>
                         <h3 className="service-title text-left">Roof Repair</h3>
-                        <p className="service-description text-left">Description/Price</p>
+                        <p className="service-description text-left">Our team quickly addresses leaks, damage, and wear to restore your roof’s strength and keep your home safe.</p>
                     </div>
                 </div>
 
                 <div class="col-sm mx-2">
                     <div className="service-item">
-                        <img src="path of img" alt="Roof Replacement" className="img-fluid"/>
+                        <img src={Replace} alt="Roof Replacement" className="img-fluid"/>
                         <h3 className="service-title text-left">Roof Replacement</h3>
-                        <p className="service-description text-left">Description/Price</p>
+                        <p className="service-description text-left">Our team carefully removes your old roof and installs a new, high-quality one designed to enhance durability and boost your home’s value</p>
                     </div>
                 </div>
 
                 <div class="col-sm mx-2">
                     <div className="service-item">
-                        <img src="path of img" alt="Junk Removal" className="img-fluid"/>
+                        <img src={Junk} alt="Junk Removal" className="img-fluid"/>
                         <h3 className="service-title text-left">Junk Removal</h3>
-                        <p className="service-description text-left">Description/Price</p>
+                        <p className="service-description text-left">Whether it’s old furniture, yard waste, or unwanted items, our team handles it all. We offer quick, reliable pickup and disposal to clear out your space with ease.</p>
                     </div>
                 </div>
             </div>

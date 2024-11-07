@@ -1,0 +1,10 @@
+.roof-section{
+    position: absolute;
+    text-align: center;
+    
+    color: white;
+    z-index: 5;
+}
+.btn{
+    background-color: #B01F22
+}
