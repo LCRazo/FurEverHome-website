@@ -2,6 +2,11 @@
     background-color: #000;
 }
 
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
 .footer-container h4{
     color: #fff;
 }
@@ -13,6 +18,7 @@
 .about-us{
     max-width: 350px;
 }
+
 .social-media a{
     font-size: 20px;
     color: #fff;
@@ -22,6 +28,7 @@
 .btn{
     background-color: #B01F22
 }
+
 .copyright {
     font-size: small;
 }
