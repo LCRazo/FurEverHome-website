@@ -9,7 +9,7 @@ import './Services.css';
 function Services(){
     return(    
         // Ensures full width and no background color 
-        <div class="container-fluid">
+        <div id="services" class="container-fluid">
             <div class="row">
                 <div className="col-12 text-center">
                     <div className="title-container">

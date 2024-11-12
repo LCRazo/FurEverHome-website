@@ -7,7 +7,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function Footer(){
     return(
-        <div className="footer-container container-fluid pt-5"> 
+        <div id="contact" className="footer-container container-fluid pt-5"> 
             <div className='text-left footer-content'>
                 <div className='d-flex flex-wrap flex-column flex-sm-row justify-content-center'>
                        
@@ -18,7 +18,7 @@ function Footer(){
                             with 15+ years of experience delivering superior exterior home 
                             improvement solutions for the RGV.
                         </p>
-                        <div class="d-flex justify-content-right">
+                        <div class="d-flex justify-content-right pb-3">
                             <a type="button" class="btn btn-secondary" href="assets/LizethChavez.pdf" target="_blank" download>Request Free Estimate</a>
                         </div>
                        

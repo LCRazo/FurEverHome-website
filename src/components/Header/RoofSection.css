@@ -1,7 +1,9 @@
 .roof-section{
     position: absolute;
-    max-width: none;
+    max-width: 100%;
+    padding-top: 50%;
     color: white;
+    text-align: center;
     z-index: 1050;
 }
 
