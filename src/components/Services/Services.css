@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 /* Header*/
 .container-fluid{
     padding: 0 40px;
@@ -12,15 +16,12 @@
     flex-grow: 1; /* Makes the line expand to fill space */
     border: 0;
     height: 1px;
-    background: #000; /* Adjust color as needed */
+    background: #000;
 }   
 
-/* Ensure the title header is centered */
 .text-center {
     text-align: center;
 }
-
-/* Services  */
 
 .service-item{
     text-align: center;

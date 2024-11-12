@@ -1,16 +1,16 @@
-/* npm */
-  
-  /* Ensure dropdown items are styled correctly without extra spacing */
-  .navbar-nav .dropdown-menu .dropdown-item::after {
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item::after {
     display: none;
-    z-index: 1050;/* Ensure dropdown is above the navbar */
+    z-index: 1050;
   }
 
-  /* Additional styling to remove unwanted spacing and ensure correct alignment */
   .navbar-nav .nav-item {
     display: flex;
     align-items: center;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: 530;
     font-size: 18px;
   }
@@ -20,16 +20,13 @@
     font-size: auto;
   }
 
-/* Adjust the height and padding of the navbar */
 .navbar {
     padding: 1rem; /* Increase the padding to make the navbar thicker */
-    height: 80px; /* Set a custom height */
+    height: 80px; 
     position: absolute;
-    z-index: 5000;  /* Ensure navbar is above other elements */
+    z-index: 5000;
   }
 
-  
-  /* Optionally adjust the padding for the navbar links */
   .navbar-nav .nav-item .nav-link {
     padding: 0.5rem 1rem; /* Increase padding for thicker appearance */
   }

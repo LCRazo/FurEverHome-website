@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function Gallery() {
     return (
-        <div className="container-fluid my-4">
+        <div id="work-gallery" className="container-fluid my-4">
               <div className="col-12 text-center">
                     <div className="title-container">
                         <hr className="title-line" />

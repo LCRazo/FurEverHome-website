@@ -40,17 +40,6 @@ function Navbar(){
           </li>
         </ul>
       </div>
-
-      {/* <div className='nav-container container-fluid pt-5'>
-          <div className='text-left footer-content'>
-            <div className='d-flex justify-content-center pr-5'>
-                  <p>Roof Savy</p>
-                  <p>Residential & Commercial</p>
-                  <p>Your local RGV roofing contractor, family-owned and trusted for over 15 years</p>
-
-            </div>     
-          </div>
-      </div> */}
     </nav>
   );
 };
