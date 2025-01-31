@@ -15,29 +15,9 @@ function Navbar(){
       setIsMenuOpen(!isMenuOpen);
   };
   
-  //State to track if navbar is scrolling 
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  //Function to check scroll position 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
- 
   return (
     //Responsive NavBar
-    <nav className={`navbar navbar-expand-lg fixed-top ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className="navbar navbar-expand-lg fixed-top">
 
       {/* ToggleButton */}
       <button
