@@ -17,18 +17,40 @@ html {
 
   .navbar-nav .nav-item a{
     color: #fff;
-    font-size: auto;
   }
 
+  .navbar-nav li:first-child{
+    margin-right: auto;
+  }
+  
 .navbar {
-    padding: 1rem; /* Increase the padding to make the navbar thicker */
-    height: 80px; 
-    position: absolute;
+    background-color: black;
+    box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.1);
     z-index: 5000;
+    width: 100%;
+    height:fit-content;
   }
 
-  .navbar-nav .nav-item .nav-link {
-    padding: 0.5rem 1rem; /* Increase padding for thicker appearance */
-  }
+.navbar ul{
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-nav .nav-item .nav-link {
+padding: 0.5rem 1rem; /* Increase padding for thicker appearance */
+}
+
+.bg-highlight{
+  position: absolute;
+  z-index: 999;
+  background-color: rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px); 
+}
+
+
+
   
   
