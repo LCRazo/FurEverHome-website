@@ -4,7 +4,16 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        saira: ['"Saira Condensed"', 'sans-serif'],
+      },
+      colors: {
+        deaf51: '#DEAF51',
+        a07d: '#55A07D',
+        cf4350: '#CF4350'     
+      },
+    },
   },
   plugins: [],
 }
