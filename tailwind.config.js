@@ -11,7 +11,8 @@ module.exports = {
       colors: {
         deaf51: '#DEAF51',
         a07d: '#55A07D',
-        cf4350: '#CF4350'     
+        cf4350: '#CF4350',
+        c4b2: '#53C4b2'    
       },
     },
   },

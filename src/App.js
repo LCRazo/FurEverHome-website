@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar/NavBar';
 import Header from './components/Header/Header.js';
 import RoofSection from './components/Header/RoofSection';
-import Services from './components/Services/Services';
+import Adopt from './components/Adopt/Adopt.js';
 import Pets from './components/Pets/pets.js';
 import Footer from './components/Footer/Footer';
 
@@ -18,7 +18,7 @@ function App() {
         <div className="text-center">
         </div>
       </section>
-      <Services />
+      <Adopt />
       <Pets />
     </main>
     <Footer />
