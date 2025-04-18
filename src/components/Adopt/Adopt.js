@@ -3,7 +3,7 @@ import Junk from '../assets/junk-removal.jpg'
 import Repair from '../assets/roof-repair.jpg'
 import Replace from '../assets/roof-replacement.jpg'
 import Install from '../assets/roof-installation.jpg'
-import './Services.css';
+import './Adopt.css';
 
 
 function Services(){

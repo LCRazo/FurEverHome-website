@@ -9,7 +9,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function Pets() {
     return (
-      <section className= "bg-pink-300 py-12 px-4 text-center">
+      <section id="pets" className= "bg-pink-300 py-12 px-4 text-center ">
             {/*SVG Title*/} 
             <div className="flex justify-center mb-10">
                  <img src={ourPetsLogo} alt="Our Pets Logo" className="h-16 md:h-20"></img>
@@ -38,7 +38,7 @@ function Pets() {
                 <div className="ml-3 mt-3 rounded-full overflow-hidden flex items-center justify-center">
                     <img src={otherImg} className="object-cover w-full h-full"></img>
                 </div>
-                <span className='mt-4 bg-cf4350 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-red-500 transition-colors'>Others</span>
+                <span className='mt-4 bg-cf4350 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-red-700 transition-colors'>Others</span>
                 </div>
             </div>
       </section>
