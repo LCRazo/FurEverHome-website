@@ -26,9 +26,9 @@ function Footer(){
                      </div>
 
                      <div className="w-full md:w-auto flex justify-center items-center mt-5 space-x-4 text-2xl">
-                            <a href="#"><i className="fa-brands text-white fa-instagram "></i></a>
-                            <a href="#"><i className="ml-3 fa-brands text-white fa-facebook"></i></a>
-                            <a href="#"><i className="ml-3 fa-brands text-white fa-linkedin"></i></a>
+                            <a href="#"><i className="fa-brands text-white fa-instagram hover:shadow-lg hover:shadow-a06EB1"></i></a>
+                            <a href="#"><i className="ml-3 fa-brands text-white fa-facebook hover:shadow-lg hover:shadow-a06EB1"></i></a>
+                            <a href="#"><i className="ml-3 fa-brands text-white fa-linkedin hover:shadow-lg hover:shadow-a06EB1"></i></a>
                     </div>
                
                 </div>
