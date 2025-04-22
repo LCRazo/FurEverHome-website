@@ -5,6 +5,7 @@ import Header from './components/Header/Header.js';
 import RoofSection from './components/Header/RoofSection';
 import Adopt from './components/Adopt/Adopt.js';
 import Pets from './components/Pets/pets.js';
+import Events from './components/Events/Events.js'
 import Footer from './components/Footer/Footer';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       </section>
       <Adopt />
       <Pets />
+      <Events/>
     </main>
     <Footer />
   </div>
