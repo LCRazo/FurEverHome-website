@@ -4,7 +4,6 @@ import './NavBar.css';
 import 'jquery/dist/jquery.slim.min.js';
 import '@popperjs/core/dist/umd/popper.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import Logo from '../assets/img1.jpg'
 
 function Navbar(){
   //State to track if menu is open
@@ -56,7 +55,7 @@ function Navbar(){
       <div className={`collapse navbar-collapse justify-content-center ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
         <ul className={`navbar-nav ${isMenuOpen ? '' : 'bg-highlight'}`}>
           <li className="nav-item ml-auto">
-           <img src={Logo} alt="roofing" width="50" height="50"></img>
+          
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#about">About</a>
