@@ -18,8 +18,8 @@ function App() {
         <div className="text-center">
         </div>
       </section>
-      <Adopt />
-      <Pets />
+      <Adopt/>
+      <Pets/>
       <SignUp/>
       <Events/>
     </main>
