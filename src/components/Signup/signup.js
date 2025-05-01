@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import title from '../assets/signupSlang.svg'
 import pawsprint from '../assets/pawprint.svg'
 import pawsprint2 from '../assets/pawprint2.svg'
@@ -22,13 +23,13 @@ function signUp(){
                     {/*Owner Buttons */}
                     <div className='absolute top-[16%] left-[70%]'>
                         <h2 className=' text-white'>OWNER</h2>
-                        <span className='hover:underline text-white text-2xl'>Sign Up</span>
+                        <Link to='/api/owner/register/step1' className='hover:underline text-white text-2xl'>Sign Up</Link>
                     </div>
                    
                     {/*Adopter Button */}
                     <div className='absolute top-[67%] left-[25%]'>
                     <h2 className=' text-white'>ADOPTER</h2>
-                    <span className='hover:underline text-white text-2xl'> Sign Up</span>
+                    <Link to= '/api/adopter/register/step1' className='hover:underline text-white text-2xl'> Sign Up</Link>
                     </div>
                    
   
