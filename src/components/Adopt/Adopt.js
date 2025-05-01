@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import adoptSlang from '../assets/adoptSlang.svg';
 
 function Adopt() {
+
   return (
     <section id="pets" className="bg-c4b2 py-12 px-4 text-center">
       {/* Catchphrase */}
@@ -15,9 +17,9 @@ function Adopt() {
           <h3 className="mt-4 text-white font-saira text-2xl text-center">
             Looking for a new best friend? Browse our adorable adoptables and discover pets waiting to fill your home with love—whether you're ready for a lifelong bond or can offer temporary care.
           </h3>
-          <span className="mt-4 bg-e95991 text-white font-saira text-2xl px-5 py-2 rounded-md cursor-pointer">
+          <Link to='/api/pets/adopt' className="mt-4 bg-e95991 text-white font-saira text-2xl px-5 py-2 rounded-md cursor-pointer">
             Adopt
-          </span>
+          </Link>
         </div>
 
         {/* Rehome */}
@@ -25,9 +27,9 @@ function Adopt() {
           <h3 className="mt-4 text-white font-saira text-2xl text-center">
             Find Your Pet a Loving Forever Home: When life changes, we’re here to help. Connect with trusted adopters ready to welcome your pet into their hearts and homes.
           </h3>
-          <span className="mt-4 bg-white text-e95991 font-saira text-2xl px-5 py-2 rounded-md hover:bg-gray-50 cursor-pointer">
+          <Link to= "/api/pets/register/step1" className="mt-4 bg-white text-e95991 font-saira text-2xl px-5 py-2 rounded-md hover:bg-gray-50 cursor-pointer">
             Rehome
-          </span>
+          </Link >
         </div>
       </div>
     </section>
