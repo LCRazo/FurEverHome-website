@@ -7,7 +7,7 @@ import pet from '../assets/homepage-dog.svg';
 
 function Header() {
   return(
-    <section id="pets" className="bg-[#FFF29C] min-h-screen flex flex-col md:flex-row">
+    <section id="home" className="bg-[#FFF29C] min-h-screen flex flex-col md:flex-row">
       
       {/* Left Column with Full-Height Pet Image */}
       {/* <div className="flex-1 flex items-stretch justify-self-start">

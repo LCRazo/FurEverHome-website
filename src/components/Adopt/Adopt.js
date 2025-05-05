@@ -5,7 +5,7 @@ import adoptSlang from '../assets/adoptSlang.svg';
 function Adopt() {
 
   return (
-    <section id="pets" className="bg-c4b2 py-12 px-4 text-center">
+    <section id="about" className="bg-c4b2 py-12 px-4 text-center">
       {/* Catchphrase */}
       <div className="flex justify-center mb-10">
         <img src={adoptSlang} alt="catchphrase" className="" />
