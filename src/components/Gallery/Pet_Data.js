@@ -5,6 +5,7 @@ const pets = [
   {
     id: 1,
     name: 'Toby',
+    type: 'dog',
     breed: 'dalmatian',
     age: '3 months old',
     gender: 'male',
@@ -17,6 +18,7 @@ const pets = [
   {
     id: 1,
     name: 'Mochi',
+    type: 'cat',
     breed: 'American Shorthair',
     age: '2 years old',
     gender: 'female',
