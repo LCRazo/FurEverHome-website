@@ -15,7 +15,12 @@ function Gallery() {
     const [selectedPet, setSelectedPet] = useState(null);
   
     const filteredPets = pets.filter((pet) => {
-      const matchesType = filters.type ? pet.type === filters.type : true;
+      const matchesType = filters.type 
+        ? filters.type === 'other'
+          ? pet.type !== 'dog' && pet.type !== 'cat'
+          : pet.type === filters.type
+        : true;
+
       const matchesGender = filters.gender ? pet.gender === filters.gender : true;
   
       const age = pet.ageInMonths;
@@ -45,7 +50,7 @@ function Gallery() {
             <PetCard key={pet.id} pet={pet} onClick={() => setSelectedPet(pet)} />
           ))}
         </div>
-        
+
         {/* Modal */}
         {selectedPet && (
           <PetProfileModal pet={selectedPet} onClose={() => setSelectedPet(null)} />
