@@ -38,6 +38,14 @@ function PetFilter({ filters, onChange }) {
         <option value="adult">1-8 years</option>
         <option value="senior">Over 8 years</option>
       </select>
+
+      <button
+        onClick={() => onChange({type:'', gender:'', ageRange:''})}
+        className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600'
+      >
+        Reset Filters
+      </button>
+
     </div>
   );
 }
