@@ -12,6 +12,8 @@ function Gallery() {
       ageRange:'',
     });
 
+    const [selectedPet, setSelectedPet] = useState(null);
+  
     const filteredPets = pets.filter((pet) => {
       const matchesType = filters.type ? pet.type === filters.type : true;
       const matchesGender = filters.gender ? pet.gender === filters.gender : true;
@@ -29,25 +31,22 @@ function Gallery() {
       return matchesType && matchesGender && matchesAge;
     });
   
-    const [selectedPet, setSelectedPet] = useState(null);
-  
+    
     return (
       <section className="bg-[#fff29c] py-12 px-4 font-saira text-center min-h-screen">
         <h1 className="text-4xl font-bold mb-10">Pet Gallery</h1>
-
+        
+        {/* Filter */}
         <PetFilter filters={filters} onChange={setFilters} />
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        {filteredPets.map((pet) => (
-          <PetCard key={pet.id} pet={pet} />
-        ))}
-      </div>
 
+        {/* Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {pets.map((pet) => (
+          {filteredPets.map((pet) => (
             <PetCard key={pet.id} pet={pet} onClick={() => setSelectedPet(pet)} />
           ))}
         </div>
-  
+        
+        {/* Modal */}
         {selectedPet && (
           <PetProfileModal pet={selectedPet} onClose={() => setSelectedPet(null)} />
         )}

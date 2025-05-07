@@ -1,4 +1,5 @@
-import React, { useState} from 'react';
+// components/PetFilter.js
+import React from 'react';
 
 function PetFilter({ filters, onChange }) {
   return (
