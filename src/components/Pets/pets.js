@@ -20,7 +20,7 @@ function Pets() {
                 {/*Dogs */}
                 <div className="flex flex-col items-center">
                         <div className=" mt-3 rounded-full overflow-hidden flex items-center justify-center">
-                            <img src={dogImg}  className="object-cover w-full h-full" >
+                            <img src={dogImg} alt='dogImage'className="object-cover w-full h-full" >
                             </img>
                         </div>
                         {/*Button */}
@@ -29,7 +29,7 @@ function Pets() {
                 {/*Cats*/}
                 <div className="flex flex-col items-center">
                 <div className="ml-3 mt-3 rounded-full overflow-hidden flex items-center justify-center">
-                            <img src={catImg} className="object-cover w-full h-full"></img>
+                            <img src={catImg} alt='catImage' className="object-cover w-full h-full"></img>
                         </div>
                          {/*Button */}
                         <span className='mt-4 bg-a07d text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-green-300 transition-colors'>Cats</span>
@@ -38,7 +38,7 @@ function Pets() {
                 {/*Other*/}
                 <div className="flex flex-col items-center">
                 <div className="ml-3 mt-3 rounded-full overflow-hidden flex items-center justify-center">
-                    <img src={otherImg} className="object-cover w-full h-full"></img>
+                    <img src={otherImg} alt='otherImage' className="object-cover w-full h-full"></img>
                 </div>
                  {/*Button */}
                 <span className='mt-4 bg-cf4350 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-red-700 transition-colors'>Others</span>

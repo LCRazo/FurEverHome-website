@@ -116,8 +116,8 @@ function Navbar(){
         <div className="hidden md:flex space-x-8 text-white text-xl font-saira">
           <a href="#home" className="text-white no-underline hover:underline cursor-pointer">Home</a>
           <a href="#about" className="text-white no-underline hover:underline">About</a>
-          <a href="#events" className="text-white no-underline hover:underline">Services</a>
-          <a href="#pets" className="text-white no-underline hover:underline">Work Gallery</a>
+          {/* <a href="#events" className="text-white no-underline hover:underline">Services</a> */}
+          <a href="#pets" className="text-white no-underline hover:underline">Pet Gallery</a>
           <a href="#contact" className="text-white no-underline hover:underline">Contact</a>
           <a href="#signUp" className="text-white no-underline hover:underline">Login</a>
         </div>
