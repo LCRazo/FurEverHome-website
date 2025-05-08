@@ -48,9 +48,16 @@ function Input({ label, name, value, onChange }) {
 
 function OwnerRegistrationStep2(){
     const navigate = useNavigate();
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+    
+    const handleSubmit = () => {
+        // setAdopterStatus(true); // if you're still using this
+      setShowSuccessPopup(true); // show popup
+  
+      setTimeout(() => {
+      navigate('/');
+      }, 1500); // wait 1.5s before navigating
 
-    const handleNext = () => {
-        navigate('/api/adopter/register/step2');
     };
 
     const [formData, setFormData] = useState({
@@ -69,6 +76,7 @@ function OwnerRegistrationStep2(){
     const rehomeReason = ['Financial Hardship', 'Hosuing Issues', 'Behavioral Challenges','Allergies', 'Time Constraints', 'Health Issues'
       ,'Moving','Family Changes', 'Too Many Pets', 'Owner Incapacitated'
     ];
+    const organization = ['Yes', 'No'];
   
 
     return(
@@ -81,19 +89,25 @@ function OwnerRegistrationStep2(){
 
 
                 <div>
-                    <Input label="Are you an organization?*" name="name" value={formData.name} onChange={handleChange} required/>
-                    
-                    <Dropdown label="Reason for Rehome?*" name="rehomeReason" options={rehomeReason} value={formData.rehomeReason} onChange={handleChange}/>
+                    <Dropdown label="Are you an organization?*" name="organization" options={organization} value={formData.organization} onChange={handleChange} required/>
+                    <Dropdown label="Reason for Rehome?*" name="rehomeReason" options={rehomeReason} value={formData.rehomeReason} onChange={handleChange} required/>
                 </div>
 
 
                 {/*Buttons */}
                 <div className='pt-4 flex justify-center space-x-4'>
-                    <button onClick={handleNext} className=''>
+                    <button onClick={handleSubmit} className=''>
                         <img src={Submit}></img>
                     </button>
                 </div>
-
+                
+                {showSuccessPopup && (
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                  <div className="bg-white p-6 rounded shadow-lg text-center">
+                    <p className="text-green-600 font-semibold text-xl">🎉 Profile created successfully!</p>
+                  </div>
+                </div>
+          )}
             </section>
     )
 };

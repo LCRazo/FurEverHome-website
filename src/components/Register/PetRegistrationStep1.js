@@ -1,10 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Logo from '../assets/petRegisterLogo.svg'
-import Next from '../assets/nextbutton.svg'
+import Next from '../assets/NextButton.svg'
 import {useNavigate} from 'react-router-dom';
+import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
+
+function Dropdown({ label, name, options = [], value, onChange }) {
+  return (
+    <div>
+      <label className="block text-left text-white font-semibold">{label}</label>
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="block w-full p-2 text-black rounded"
+        required
+      >
+        <option value="">-- Select --</option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 function PetRegistrationStep1() {
-
+  const [breedOptionsBySpecies, setBreedOptionsBySpecies] = useState({});
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -27,7 +50,42 @@ function PetRegistrationStep1() {
     webPhoto: ''
   });
 
+useEffect(() => {
+    async function loadBreeds() {
+      try {
 
+  
+        // Assuming these are just arrays of names: ['Siamese', 'Persian']
+        const groupedDogs = { Dog: dogBreeds };
+        const groupedCats = { Cat: catBreeds };
+        const groupedReptiles = { Reptile: reptileBreeds};
+        const groupedBirds = { Bird: birdBreeds};
+        const groupedRodents = { Rodent: rodentBreeds};
+        const groupedOthers = { Other: otherBreeds};
+  
+        const Breeds = {
+          ...groupedDogs,
+          ...groupedCats,
+          ...groupedReptiles,
+          ...groupedBirds,
+          ...groupedRodents,
+          ...groupedOthers
+        };
+  
+        setBreedOptionsBySpecies(Breeds);
+      } catch (err) {
+        console.error('API error:', err);
+      }
+    }
+  
+    loadBreeds();
+  }, []);
+  
+
+  const species = ['Dog', 'Cat', 'Reptile','Bird','Rodent','Other'];
+  const breedOptions = breedOptionsBySpecies[formData.species] || [];
+  const workClassOptions = ['Farm', 'Service','None'];
+  const urgencyOptions = ['3 weeks', '3 months','6 months+'];
 
   return(
     <section className= "bg-pink-300 min-h-screen py-12 px-4 text-center text-white font-saira text-xl ">
@@ -48,13 +106,12 @@ function PetRegistrationStep1() {
                 className="block w-full mb-2 p-2 text-black" 
                 required/>
           
-          <label className="block text-left text-white">Species*</label>
-          <input 
-                name="species" 
-                value={formData.species} 
-                onChange={handleChange} 
-                className="block w-full mb-2 p-2 text-black" 
-                required/>
+          <Dropdown label="Species *" name="species" options={species} value={formData.species} onChange={handleChange}/>
+          {formData.species && (
+            <Dropdown label="Breed *" name="breed" options={breedOptions} value={formData.breed} onChange={handleChange}/>
+          )}
+          <Dropdown label="Working Class *" name="workingClass" options={workClassOptions} value={formData.workingClass} onChange={handleChange} />
+         
           
           <label className="block text-left text-white">Breed*</label>
           <input 
@@ -63,22 +120,9 @@ function PetRegistrationStep1() {
                 onChange={handleChange} 
                 className="block w-full mb-2 p-2 text-black"
                 required/>
-          
-          <label className="block text-left text-white">Is your pet a working class breed?*</label>
-          <input 
-                name="workingClass"  
-                value={formData.workingClass} 
-                onChange={handleChange} 
-                className="block w-full mb-2 p-2 text-black" 
-                required/>
 
-          <label className="block text-left text-white">How long can you care for your pet?*</label>
-          <input  
-                name="urgency"  
-                value={formData.urgency} 
-                onChange={handleChange}
-                className="block w-full mb-2 p-2 text-black rounded" 
-                required/>
+          <Dropdown label="How long can you care for your pet?* " name="urgency" options={urgencyOptions} value={formData.urgency} onChange={handleChange} required/>
+
 
           <label className="block text-left text-white">Web Photo*</label>
               <input

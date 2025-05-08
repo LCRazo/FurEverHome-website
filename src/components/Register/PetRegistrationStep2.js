@@ -4,9 +4,32 @@ import Submit from '../assets/submitbutton.svg'
 import { useNavigate } from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 
+function Dropdown({ label, name, options = [], value, onChange }) {
+  return (
+    <div>
+      <label className="block text-left text-white font-semibold">{label}</label>
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="block w-full p-2 text-black rounded"
+        required
+      >
+        <option value="">-- Select --</option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 function PetRegistrationStep2() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const step1Data = location.state || {};
 
   const [formData, setFormData] = useState({
@@ -53,8 +76,19 @@ function PetRegistrationStep2() {
         console.error('Error:', err);
       }
   
-    };
+       // setAdopterStatus(true); // if you're still using this
+      setShowSuccessPopup(true); // show popup
   
+      setTimeout(() => {
+      navigate('/');
+      }, 1500); // wait 1.5s before navigating
+
+    };
+    const genderOptions = ['male', 'female'];
+    const sizeOptions = ['Small (up to 20lbs )', 'Medium (21-50lbs)', 'Large (51-100lbs)', 'Extra-Large (over 100lbs)'];
+    const AgeOptions = ['Less than 1 year','1-4 years','4-8 years', '8+ years'];
+    const VaccineOptions = ['Yes', 'No'];
+    const FixedOptions = ['Yes', 'No'];
 
   return(
     <section className= "bg-pink-300 min-h-screen py-12 px-4 text-center text-white font-saira text-xl ">
@@ -65,45 +99,11 @@ function PetRegistrationStep2() {
         </div>
          {/*Form */}
          <div className='flex-col items-center'>
-          <label className="block text-left text-white">Gender*</label>
-          <input 
-              name="gender"
-              value= {formData.gender}
-              onChange={handleChange} 
-              className="block w-full mb-2 p-2 text-black"
-              required/>
-
-          <label className="block text-left text-white">Size*</label>
-          <input 
-              name="size" 
-              value={formData.size}
-              onChange={handleChange}
-              className="block w-full mb-2 p-2 text-black"
-              required/>
-
-          <label className="block text-left text-white">Age*</label>
-          <input 
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              className="block w-full mb-2 p-2 text-black"
-              required/>
-
-          <label className="block text-left text-white">Is your pet vaccinated?*</label>
-          <input 
-              name="vaccinated" 
-              value={formData.vaccinated}
-              onChange={handleChange}
-              className="block w-full mb-2 p-2 text-black"
-              required/>
-
-          <label className="block text-left text-white">Is your pet spayed or neutered?*</label>
-          <input 
-              name="fixed" 
-              value={formData.fixed}
-              onChange={handleChange}
-              className="block w-full mb-2 p-2 text-black"
-              required/>
+         <Dropdown label="Gender" name="Gender" options={genderOptions} value={formData.gender} onChange={handleChange}/>
+          <Dropdown label="Size" name="Size" options={sizeOptions} value={formData.size} onChange={handleChange} />
+          <Dropdown label="Age" name="Age" options={AgeOptions} value={formData.age} onChange={handleChange}/>
+          <Dropdown label="Vaccinated?" name="Vaccines" options={VaccineOptions} value={formData.vaccines} onChange={handleChange}/>
+          <Dropdown label="Spayed/Neutered?" name="Fixed" options={FixedOptions} value={formData.fixed} onChange={handleChange}/>
 
         </div>
          {/*Buttons */}
@@ -112,6 +112,14 @@ function PetRegistrationStep2() {
               <img src={Submit}></img>
           </button>
         </div>
+
+        {showSuccessPopup && (
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded shadow-lg text-center">
+              <p className="text-green-600 font-semibold text-xl">🎉 Profile created successfully!</p>
+            </div>
+          </div>
+          )}
     </section>
   );
 };

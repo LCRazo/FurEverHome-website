@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Next from '../assets/nextbutton.svg'
+import Next from '../assets/NextButton.svg'
 import title from '../assets/OwnerRegistration.svg';
 // import desc from '../assets/AdopterRegistrationDesc2.svg';
 // import next from '../assets/NextButton.svg';
