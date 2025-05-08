@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Logo from '../assets/petRegisterLogo.svg'
+import Next from '../assets/nextbutton.svg'
 import {useNavigate} from 'react-router-dom';
 
 function PetRegistrationStep1() {
@@ -91,7 +92,9 @@ function PetRegistrationStep1() {
 
         {/*Buttons */}
         <div className='pt-4 flex justify-center space-x-4'>
-          <button onClick={handleNext} className='bg-white text-pink-600 px-4 py-2 rounded'>Next</button>
+          <button onClick={handleNext} className=''>
+              <img src={Next}></img>
+          </button>
         </div>
         
       </div>

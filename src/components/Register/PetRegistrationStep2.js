@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Logo from '../assets/petRegisterLogo.svg'
+import Submit from '../assets/submitbutton.svg'
 import { useNavigate } from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 
@@ -107,7 +108,9 @@ function PetRegistrationStep2() {
         </div>
          {/*Buttons */}
          <div className='pt-4'>
-          <button className='bg-white text-pink-600 px-4 py-2 rounded' onClick={handleSubmit}>Submit</button>
+          <button className='' onClick={handleSubmit}>
+              <img src={Submit}></img>
+          </button>
         </div>
     </section>
   );
