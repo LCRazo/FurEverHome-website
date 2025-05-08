@@ -1,19 +1,148 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import Logo from '../assets/petRegisterLogo.svg'
+import Next from '../assets/NextButton.svg'
 import {useNavigate} from 'react-router-dom';
+import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
+
+function Dropdown({ label, name, options = [], value, onChange }) {
+  return (
+    <div>
+      <label className="block text-left text-white font-semibold">{label}</label>
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="block w-full p-2 text-black rounded"
+        required
+      >
+        <option value="">-- Select --</option>
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 function PetRegistrationStep1() {
-
+  const [breedOptionsBySpecies, setBreedOptionsBySpecies] = useState({});
   const navigate = useNavigate();
 
   const handleNext = () => {
-      navigate('/api/pets/register/step2');
+      const { webPhoto, ...textData } = formData;
+
+      navigate('/api/pets/register/step2', {state:{...textData, webPhoto}});
+
   };
 
+  const handleChange = (e) => {
+      setFormData({...formData, [e.target.name]: e.target.value});
+  }
+
+  const [formData, setFormData] = useState({
+    name: '',
+    species: '',
+    breed: '',
+    workingClass: '',
+    urgency: '',
+    webPhoto: ''
+  });
+
+useEffect(() => {
+    async function loadBreeds() {
+      try {
+
+  
+        // Assuming these are just arrays of names: ['Siamese', 'Persian']
+        const groupedDogs = { Dog: dogBreeds };
+        const groupedCats = { Cat: catBreeds };
+        const groupedReptiles = { Reptile: reptileBreeds};
+        const groupedBirds = { Bird: birdBreeds};
+        const groupedRodents = { Rodent: rodentBreeds};
+        const groupedOthers = { Other: otherBreeds};
+  
+        const Breeds = {
+          ...groupedDogs,
+          ...groupedCats,
+          ...groupedReptiles,
+          ...groupedBirds,
+          ...groupedRodents,
+          ...groupedOthers
+        };
+  
+        setBreedOptionsBySpecies(Breeds);
+      } catch (err) {
+        console.error('API error:', err);
+      }
+    }
+  
+    loadBreeds();
+  }, []);
+  
+
+  const species = ['Dog', 'Cat', 'Reptile','Bird','Rodent','Other'];
+  const breedOptions = breedOptionsBySpecies[formData.species] || [];
+  const workClassOptions = ['Farm', 'Service','None'];
+  const urgencyOptions = ['3 weeks', '3 months','6 months+'];
+
   return(
-    <section id="pets" className= "bg-pink-300 py-12 px-4 text-center ">
-        <button onClick={handleNext} >
-          Next
-        </button>
+    <section className= "bg-pink-300 min-h-screen py-12 px-4 text-center text-white font-saira text-xl ">
+      <div classname='' >
+          {/*Title */}
+        <div className='flex flex-col items-center mb-4'>
+            <img src={Logo}></img>
+            <p className='pt-4'>Let’s get to know your pet! Fill out the following background information.</p>
+        </div>
+
+        {/*Form */}
+        <div className='flex-col items-center'>
+          <label className="block text-left text-white">Name*</label>
+          <input 
+                name="name" 
+                value={formData.name} 
+                onChange={handleChange} 
+                className="block w-full mb-2 p-2 text-black" 
+                required/>
+          
+          <Dropdown label="Species *" name="species" options={species} value={formData.species} onChange={handleChange}/>
+          {formData.species && (
+            <Dropdown label="Breed *" name="breed" options={breedOptions} value={formData.breed} onChange={handleChange}/>
+          )}
+          <Dropdown label="Working Class *" name="workingClass" options={workClassOptions} value={formData.workingClass} onChange={handleChange} />
+         
+          
+          <label className="block text-left text-white">Breed*</label>
+          <input 
+                name="breed"  
+                value={formData.breed} 
+                onChange={handleChange} 
+                className="block w-full mb-2 p-2 text-black"
+                required/>
+
+          <Dropdown label="How long can you care for your pet?* " name="urgency" options={urgencyOptions} value={formData.urgency} onChange={handleChange} required/>
+
+
+          <label className="block text-left text-white">Web Photo*</label>
+              <input
+                name="webPhoto"
+                type="file"
+                accept="image/*"
+                onChange={(e) => setFormData({...formData, webPhoto: e.target.files[0]})}
+                className="block w-full mb-2 p-2 text-black bg-white rounded"
+              />
+        </div>
+
+        {/*Buttons */}
+        <div className='pt-4 flex justify-center space-x-4'>
+          <button onClick={handleNext} className=''>
+              <img src={Next}></img>
+          </button>
+        </div>
+        
+      </div>
+      
     </section>
   );
 };
