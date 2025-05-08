@@ -4,13 +4,13 @@ import React from 'react';
 function PetFilter({ filters, onChange }) {
   return (
     <div className="flex flex-wrap gap-4 justify-center mb-8">
-      {/* Type */}
+      {/* Species */}
       <select
-        value={filters.type}
-        onChange={(e) => onChange({ ...filters, type: e.target.value })}
+        value={filters.species}
+        onChange={(e) => onChange({ ...filters, species: e.target.value })}
         className="p-2 rounded"
       >
-        <option value="">All Types</option>
+        <option value="">All Species</option>
         <option value="dog">Dogs</option>
         <option value="cat">Cats</option>
         <option value="other">Other</option>
@@ -40,7 +40,7 @@ function PetFilter({ filters, onChange }) {
       </select>
 
       <button
-        onClick={() => onChange({type:'', gender:'', ageRange:''})}
+        onClick={() => onChange({species:'', gender:'', ageRange:''})}
         className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600'
       >
         Reset Filters

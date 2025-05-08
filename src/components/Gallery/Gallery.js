@@ -7,7 +7,7 @@ import PetFilter from './Pet_Filter';
 function Gallery() {
 
     const [filters, setFilters] = useState({
-      type: '',
+      species: '',
       gender:'',
       ageRange:'',
     });
@@ -15,10 +15,10 @@ function Gallery() {
     const [selectedPet, setSelectedPet] = useState(null);
   
     const filteredPets = pets.filter((pet) => {
-      const matchesType = filters.type 
-        ? filters.type === 'other'
-          ? pet.type !== 'dog' && pet.type !== 'cat'
-          : pet.type === filters.type
+      const matchesSpecies = filters.species
+        ? filters.species === 'other'
+          ? pet.species !== 'dog' && pet.species !== 'cat'
+          : pet.species === filters.species
         : true;
 
       const matchesGender = filters.gender ? pet.gender === filters.gender : true;
@@ -33,7 +33,7 @@ function Gallery() {
           ? age > 96
           : true;
   
-      return matchesType && matchesGender && matchesAge;
+      return matchesSpecies && matchesGender && matchesAge;
     });
   
     

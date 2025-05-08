@@ -3,6 +3,28 @@ import OwnerProfileModal from './Owner_Profile_Modal';
 
 function PetProfileModal({ pet, onClose }) {
   const [showOwnerModal, setShowOwnerModal] = useState(false);
+  const [userNotification, setUserNotification] = useState(null);
+  const [ownerNotification, setOwnerNotification] = useState(null);
+
+  // Simulate user name
+  const currentUser = {
+    name: 'Belinda Alvarado',
+    profileUrl: '/user/belinda-alvarado'
+  };
+
+  //Simulate sending/recieving adoption interest
+  const handleAdoptClick = () => {
+    setUserNotification('Adoption interest received!');
+    setOwnerNotification(
+      `${currentUser.name} has expressed interest in ${pet.name}.`
+    );
+
+    // Clear messages after a few seconds
+    setTimeout(() => {
+      setUserNotification(null);
+      setOwnerNotification(null);
+    }, 4000);
+  };
 
     return (
       <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4">
@@ -12,7 +34,14 @@ function PetProfileModal({ pet, onClose }) {
           <button 
           onClick={onClose} 
           className="absolute top-0 right-2 text-3xl hover:text-red-400">&times;</button>
-  
+
+          {/*Notification to the user */}
+          {userNotification && (
+            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded shadow z-20">
+              {userNotification}
+            </div>
+          )}
+
           {/* Pet Image */}
           <div className="w-full md:w-1/2 h-1/2 aspect-square rounded-xl self-center">
             <img
@@ -36,7 +65,9 @@ function PetProfileModal({ pet, onClose }) {
 
               <div className='flex flex-row gap-x-6'>
 
-              <button className="bg-teal-400 hover:bg-teal-600 text-white px-4 py-2 mb-4">
+              <button 
+                onClick={handleAdoptClick}
+                className="bg-teal-400 hover:bg-teal-600 text-white px-4 py-2 mb-4">
                 Adopt Me
               </button>
 
@@ -74,6 +105,13 @@ function PetProfileModal({ pet, onClose }) {
           {showOwnerModal && (
             <OwnerProfileModal owner={pet.owner} onClose={() => setShowOwnerModal(false)} />
             )}
+
+          {/* Developer message, need to make it so notification is sent to owner about adoption interest */}  
+          {ownerNotification && (
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-2 rounded shadow z-20">
+              {ownerNotification}
+            </div>
+          )}
         </div>
       </div>
     );
