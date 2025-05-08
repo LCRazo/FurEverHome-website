@@ -9,7 +9,7 @@ function signUp(){
         <section id="signUp" className='bg-fff29c py-12 px-4 text-center font-saira'>
             <div className='flex flex-col md:flex-row justify-center items-center'>
                 <div className='flex flex-col items-center'>
-                    <img src={title} className='h-auto w-auto'></img>
+                    <img src={title} alt='title' className='h-auto w-auto'></img>
                     <h3 className='text-2xl mb-2'>Sign Up!</h3>
                     <h4 className='text-md md:text-lg max-w-md'>Ready to make a difference in a pet's life? Sign up as an owner 
                     to rehome your pet with care, or join as an adopter to find your next furry friend. 
@@ -17,8 +17,8 @@ function signUp(){
                 </div>
 
                 <div className='mt-20 flex flex-col items-center relative w-[300px] md:w-[400px]'>
-                    <img src={pawsprint} className='ml-40 shadow-outline animate-bounce'></img>
-                    <img src={pawsprint2}className='mt-3 mr-40 shadow-outline animate-bounce'></img>     
+                    <img src={pawsprint} alt='pawprint' className='ml-40 shadow-outline animate-bounce'></img>
+                    <img src={pawsprint2} alt='pawprint2' className='mt-3 mr-40 shadow-outline animate-bounce'></img>     
                            
                     {/*Owner Buttons */}
                     <div className='absolute top-[16%] left-[70%]'>
