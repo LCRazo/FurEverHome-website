@@ -59,6 +59,9 @@ function AdopterRegistrationStep2(){
         jobTitle: '',
         numberPets: '',
         phoneNumber: '',
+        address: '',
+        city: '',
+        state: '',
         location: '',
         adopterPhoto: null,
     });
@@ -89,9 +92,13 @@ function AdopterRegistrationStep2(){
                     <Dropdown label="Household Size *" name="householdSize" options={householdSize} value={formData.householdSize} onChange={handleChange}/>
                     <Dropdown label="Job Type *" name="jobType" options={jobType} value={formData.jobType} onChange={handleChange}/>
                     <Dropdown label="Job Title *" name="jobTitle" options={jobTitle} value={formData.jobTitle} onChange={handleChange}/>
-                    <Dropdown label="Number of Pets *" name="numberPets" option={petCount} value={formData.numberPets} onChange={handleChange}/>
+                    <Dropdown label="Number of Pets *" name="numberPets" options={petCount} value={formData.numberPets} onChange={handleChange}/>
                     <Input label="Phone Number *" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
-                    <Dropdown label="Location *" name="location" options={locations} value={formData.locations} onChange={handleChange}/>
+                    <Input label="Address *" name="address" value={formData.address} onChange={handleChange} />
+                    {/* <Input label="Street *" name="steet" value={formData.street} onChange={handleChange}/> */}
+                    <Input label="City *" name="city" value={formData.city} onChange={handleChange} />
+                    <Input label="State *" name="state" value={formData.state} onChange={handleChange} />
+                    <Dropdown label="Location Type *" name="location" options={locations} value={formData.locations} onChange={handleChange}/>
                 </div>
 
                 <div>

@@ -1,13 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-// import { fetchCatBreed } from '../../api/jobService.js';
-// import { fetchDogBreed } from '../../api/jobService.js';
 import title from '../assets/AdopterRegistration.svg';
 import next from '../assets/NextButton.svg';
 import desc from '../assets/AdopterRegistrationDesc3.svg';
-
-
+import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
 
 function Dropdown({ label, name, options = [], value, onChange }) {
     return (
@@ -20,7 +17,7 @@ function Dropdown({ label, name, options = [], value, onChange }) {
           className="block w-full p-2 text-black rounded"
           required
         >
-          <option value=""></option>
+          <option value="">-- Select --</option>
           {options.map((opt) => (
             <option key={opt} value={opt}>
               {opt}
@@ -34,7 +31,8 @@ function Dropdown({ label, name, options = [], value, onChange }) {
 function AdopterRegistrationStep3(){
   const [breedOptionsBySpecies, setBreedOptionsBySpecies] = useState({});
   const [formData, setFormData] = useState({ species: '', breed: '', workingClass: '', gender: '', size: '', age: '', vaccines: '', fixed: ' '});
-  const [adopterStatus, setAdopterStatus] = useState(false);
+  // const [adopterStatus, setAdopterStatus] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -48,24 +46,7 @@ function AdopterRegistrationStep3(){
   useEffect(() => {
     async function loadBreeds() {
       try {
-        
-        const catBreeds = ['Mixed','Unknown','Other','American Shorthair', 'Abyssinian', 'American Curl','British Shorthair','Bengal','Burmese','Birman',
-           'Balinese','Bombay','Burmilla', 'Cornish Rex', 'Chartreux','Devon Rex', 'Havana Brown', 'Japanese Bobtail', 'Khao Manee', 'Korat','Lykoi','LaPerm',
-           'Maine Coon','Manx', 'Norwegian Forest Cat', 'Persian', 'Ragdoll','Russian Blue','Ragamuffin','Sphynx','Scottish Fold','Siamese','Siberian', 'Somali',
-           'Turkish Van'];
-           const dogBreeds = ['Mixed','Unknown','Other','Australian Shepherd','American Cocker Spaniel', 'Akita', 'Airedale Terrier',
-            'Australian Cattle Dog','Alaskan Malamute','American Staffordshire Terrier','Anatolian Shepher Dog','Afghan Hound',
-            'American Eskimo Dog', 'Australian Terrier','Affenpinscher','Australian Bulldog','American Bulldog','American Pitbull Terrier',
-            'American Mastiff','Alaskan Husky','Alaskan Malamute','American Bulldog','Australian Cattle Dog','Australian Shepherd',
-            'Australian Terrier','Austrian Pinscher','Basenji','Basset Hound', 'Beagle','Bearded Collie', 'Belgian Malinois','Bernese Mountain Dog',
-             'Bloodhound','Border Collie','Borzoi','Boston Terrier', 'Boxer', 'Brussels Griffon','Bull Terrier','Bulldog', 'Cavalier King Charles Spaniel',
-              'Chihuahua','Chow Chow', 'Cocker Spaniel', 'Collie', 'Dachsund','Dalmatian','Doberman','English Cocker Spaniel', 'French Bulldog','German Shepherd',
-              'Golden Retriever','Great Dane','Great Pyrenees', 'Greyhound','Havanese','Italian Greyhound','Jack Russel Terrier','King Charles Spaniel',
-               'Labrador Retriever', 'Pitbull', 'Pomeranian', 'Poodle', 'Pug', 'Rottwelier', 'Saint Bernard'];
-        const reptileBreeds = ['Frog', 'Turtle', 'Snake','Iguana','Gecko','Chameleon','Lizard','Other'];
-        const birdBreeds = ['Parrot','Parakeet','Cockatoo','Macaw','Pigeon','Budgie','Dove','Other'];
-        const rodentBreeds = ['Hamster','Guinea Pig', 'Gerbil', 'Rat', 'Chinchilla', 'Sugar Glider', 'Chipmunk', 'Ferret','Other'];
-        const otherBreeds = ['Fish', 'Horse','Goat','Pig','Cow','Other'];
+
   
         // Assuming these are just arrays of names: ['Siamese', 'Persian']
         const groupedDogs = { Dog: dogBreeds };
@@ -95,8 +76,6 @@ function AdopterRegistrationStep3(){
   
 
   const species = ['Dog', 'Cat', 'Reptile','Bird','Rodent','Other'];
-  // const speciesOptions = Object.keys(breedOptionsBySpecies);
-  // console.log("speciesOptions:", speciesOptions)
   const breedOptions = breedOptionsBySpecies[formData.species] || [];
   const workClassOptions = ['Farm', 'Service','None'];
   const genderOptions = ['male', 'female'];
@@ -106,9 +85,14 @@ function AdopterRegistrationStep3(){
   const FixedOptions = ['Yes', 'No'];
 
   const handleNext = () => {
-    setAdopterStatus(true);
-    navigate('/');
+    // setAdopterStatus(true); // if you're still using this
+    setShowSuccessPopup(true); // show popup
+  
+    setTimeout(() => {
+      navigate('/');
+    }, 1500); // wait 1.5s before navigating
   };
+  
 
   return(
       <section className='bg-deaf51 min-h-screen py-12 px-4 text-center'>
@@ -127,10 +111,20 @@ function AdopterRegistrationStep3(){
           <Dropdown label="Spayed/Neutered?" name="Fixed" options={FixedOptions} value={formData.fixed} onChange={handleChange}/>
         </div>
         <div className="pt-6 flex justify-center">
-          <button type="button" className="text-white" onClick={handleNext}>
+          <button type="button" className="text-white" onClick={handleNext} >
             <img src={next} alt="Next button" />
           </button>
         </div>
+
+        {showSuccessPopup && (
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded shadow-lg text-center">
+              <p className="text-green-600 font-semibold text-xl">🎉 Profile created successfully!</p>
+            </div>
+          </div>
+          )}
+
+
       </section>
 )};
 
