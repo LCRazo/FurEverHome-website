@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import title from '../assets/AdopterRegistration.svg';
 import next from '../assets/nextbutton.svg';
-import desc from '../assets/AdopterRegistrationDesc3.svg';
 import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
 
 function Dropdown({ label, name, options = [], value, onChange }) {
@@ -104,7 +103,8 @@ function AdopterRegistrationStep3() {
   return (
     <section className='bg-deaf51 min-h-screen py-12 px-4 text-center'>
       <img src={title} alt="title" className="w-full mb-6" />
-      <img src={desc} alt="desc" className="mx-auto mb-10" />
+      <p className='pt-4 text-2xl text-white font-bold '>Now fill out the qualities you're looking for in a pet!</p>
+      {/* <img src={desc} alt="desc" className="mx-auto mb-10" /> */}
       <div>
         <Dropdown label="Species *" name="species" options={species} value={formData.species} onChange={handleChange} />
         {formData.species && (

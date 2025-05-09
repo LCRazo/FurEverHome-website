@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import title from '../assets/AdopterRegistration.svg';
-import desc from '../assets/AdopterRegistrationDesc2.svg';
-import next from '../assets/NextButton.svg';
+import next from '../assets/nextbutton.svg';
 
 
 function Input({ label, name, value, onChange }) {
