@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-import next from '../assets/nextbutton.svg';
+import { useNavigate, useLocation } from 'react-router-dom';
+import submit from '../assets/submitbutton.svg';
 import title from '../assets/Login.svg'
 
 function Login(){
     const navigate = useNavigate();
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
     const [formData, setFormData] = useState({
         username: '',
@@ -23,7 +24,14 @@ function Login(){
             alert('Password must be at least 8 characters long');
             return;
         }
-        navigate('/api/pets/register/step1');
+
+        setShowSuccessPopup(true); // show popup
+
+        setTimeout(() => {
+        navigate('/');
+        }, 1500); // wait 1.5s before navigating
+        
+      
     };
 
     return(
@@ -31,11 +39,6 @@ function Login(){
             
             <div className='flex flex-col justify-center items-center pb-5'>
                 <img src={title} alt="title" className="w-auto h-auto"></img>
-            </div>
-        
- 
-            <div className="w-full text-3xl">
-               <p>Create an username and password</p>
             </div>
             
             <div className='content-justify-center'>
@@ -66,9 +69,17 @@ function Login(){
             <div className="pt-4 flex flex-col justify-center items-center">
                 <p>SignUp?</p>
                 <button type="button" className="block text-left text-white bottom-right"onClick={handleNext}>
-                    <img src={next} alt="nextbutton" ></img>
+                    <img src={submit} alt="nextbutton" ></img>
                 </button>
             </div>
+
+            {showSuccessPopup && (
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+            <div className="bg-white p-6 rounded shadow-lg text-center">
+                <p className="text-green-600 font-semibold text-xl">🎉 Profile created successfully!</p>
+            </div>
+            </div>
+            )}
             
         </section>
     )

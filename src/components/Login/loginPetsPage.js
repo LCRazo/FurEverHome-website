@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import next from '../assets/nextbutton.svg';
-import title from '../assets/Login.svg'
+import title from '../assets/Login.svg';
+import { useNavigate, useLocation} from 'react-router-dom'
 
-function LoginAdopt(){
+function Login(){
     const navigate = useNavigate();
     const location = useLocation();
 
-    //extract query
+    //extract species from query parameter
     const queryParams = new URLSearchParams(location.search);
-    const redirect = queryParams.get('choice');
+    const redirectSpecies = queryParams.get('species');
 
     const [formData, setFormData] = useState({
         username: '',
@@ -28,16 +28,15 @@ function LoginAdopt(){
             alert('Password must be at least 8 characters long');
             return;
         }
-        if(redirect === 'adopt'){
-            navigate(`/api/pets/adopt`);
-        } else if (redirect === 'rehome') {
-            navigate(`/api/pets/register/step1`);
+
+        if(redirectSpecies){
+            navigate(`/api/pets/adopt?species=${redirectSpecies}`);
         } else {
-            alert('unable to redirect');
+            alert('Unable to redirect to pet gallery')
         }
-        
-      
     };
+
+     
 
     return(
         <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl object-fill'>
@@ -45,6 +44,7 @@ function LoginAdopt(){
             <div className='flex flex-col justify-center items-center pb-5'>
                 <img src={title} alt="title" className="w-auto h-auto"></img>
             </div>
+        
             
             <div className='content-justify-center'>
 
@@ -82,4 +82,4 @@ function LoginAdopt(){
     )
 };
 
-export default LoginAdopt;
+export default Login;
