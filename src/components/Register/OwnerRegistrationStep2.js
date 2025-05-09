@@ -65,6 +65,8 @@ function OwnerRegistrationStep2(){
         rehomeReason: '',
     });
 
+    const isFormValid = Object.values(formData).every(value => value !== '' && value !== null);
+
     const handleChange = (e) => {
         const {name, value, files} = e.target;
         setFormData({
@@ -96,8 +98,12 @@ function OwnerRegistrationStep2(){
 
                 {/*Buttons */}
                 <div className='pt-4 flex justify-center space-x-4'>
-                    <button onClick={handleSubmit} className=''>
-                        <img src={Submit}></img>
+                    <button 
+                        onClick={handleSubmit} 
+                        className='' 
+                        disabled={!isFormValid}
+                    >
+                        <img src={Submit} className={!isFormValid ? 'opacity-50' : ''}></img>
                     </button>
                 </div>
                 
