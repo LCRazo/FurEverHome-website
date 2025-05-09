@@ -111,15 +111,6 @@ useEffect(() => {
             <Dropdown label="Breed *" name="breed" options={breedOptions} value={formData.breed} onChange={handleChange}/>
           )}
           <Dropdown label="Working Class *" name="workingClass" options={workClassOptions} value={formData.workingClass} onChange={handleChange} />
-         
-          
-          <label className="block text-left text-white">Breed*</label>
-          <input 
-                name="breed"  
-                value={formData.breed} 
-                onChange={handleChange} 
-                className="block w-full mb-2 p-2 text-black"
-                required/>
 
           <Dropdown label="How long can you care for your pet?* " name="urgency" options={urgencyOptions} value={formData.urgency} onChange={handleChange} required/>
 
