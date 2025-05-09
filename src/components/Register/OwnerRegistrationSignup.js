@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import title from '../assets/OwnerRegistration.svg';
-import desc from '../assets/AdopterRegistrationDesc1.svg';
 import next from '../assets/nextbutton.svg';
 
 function OwnerRegistrationSignup(){
@@ -31,8 +30,8 @@ function OwnerRegistrationSignup(){
         <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl object-fill'>
             <img src={title} alt="title" className="w-full"></img>
 
-            <div className="w-full">
-                <img src={desc} alt="desc" className="mx-auto"></img>
+            <div className="w-full text-3xl">
+                <p>Create an username and password</p>
             </div>
             
             <div className='content-justify-center'>

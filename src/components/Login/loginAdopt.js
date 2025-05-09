@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import desc from '../assets/AdopterRegistrationDesc1.svg';
 import next from '../assets/nextbutton.svg';
 import title from '../assets/Login.svg'
 
@@ -35,8 +34,8 @@ function LoginAdopt(){
             </div>
         
  
-            <div className="w-full">
-                <img src={desc} alt="desc" className="mx-auto"></img>
+            <div className="w-full text-3xl">
+                <p>Create an username and password</p>
             </div>
             
             <div className='content-justify-center'>

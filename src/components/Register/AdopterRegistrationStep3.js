@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import title from '../assets/AdopterRegistration.svg';
 import submit from '../assets/submitbutton.svg';
-import desc from '../assets/AdopterRegistrationDesc3.svg';
 import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
 
 function Dropdown({ label, name, options = [], value, onChange }) {
