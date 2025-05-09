@@ -2,16 +2,39 @@ const express = require('express');
 const cors = require ('cors');
 const path = require('path');
 //TO-DO: Add database
-//const sequelize = require('db');
+const sequelize = require('db');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const petRoutes = require('./routes/pets'); // adjust path
-
-
-
 const app = express();
 
+
 app.use(express.json());
+
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+  ],
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
+//connection to routes
+//const appRoutes = require("./routes/applicationRoutes");
+//const authRoutes = require("./routes/authRoutes");
+//const eventRoutes = require("./routes/notificationRoutes");
+//const notificationRoutes = require("./routes/notificationRoutes");
+//const petRoutes = require("./routes/petRoutes");
+//const userRoutes = require("./routes/userRoutes");
+
+//MAY NEED CHANGE TO APPROPRIATE TYPE
+//app.use("/app", appRoutes);
+//app.use("/auth", authRoutes);
+//app.use("/events", eventRoutes);
+//app.use("/notification", notificationRoutes);
+//app.use("/pet", petRoutes);
+//app.use("user", userRoutes);
+
 // use urlencoding for form POSTs to handle data
 app.use(express.urlencoded({extended: false}));//uses traditional query passing. Allows acess to data submitted by users 
 
@@ -103,7 +126,19 @@ app.use(petRoutes);
 // });
 
 //AWS Set Up 
-sequelize.sync().then(() => {
-    console.log('Database connected');
-    app.listen(3001, () => console.log('Server running on port 3001'));
+//connection to db
+initializaConnection()
+  .then((connection) => {
+    const port = 3000;
+    app.listen(port, () => {
+      console.log('Server is running on port ${port}');
+    });
+  })
+  .catch((err) => {
+    console.error("Error initializing database connection:", err);
   });
+
+//sequelize.sync().then(() => {
+//    console.log('Database connected');
+//    app.listen(3001, () => console.log('Server running on port 3001'));
+//  });

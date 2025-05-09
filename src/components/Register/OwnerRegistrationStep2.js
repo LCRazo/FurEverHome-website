@@ -3,25 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import title from '../assets/OwnerRegistration.svg';
 import Submit from '../assets/submitbutton.svg'
-// import desc from '../assets/AdopterRegistrationDesc2.svg';
-// import next from '../assets/NextButton.svg';
 
 
-function Input({ label, name, value, onChange }) {
-    return (
-      <div>
-        <label className="block text-left text-white font-semibold">{label}</label>
-        <input
-          type="text"
-          name={name}
-          value={value}
-          onChange={onChange}
-          className="block w-full p-2 text-black rounded"
-          required
-        />
-      </div>
-    );
-  }
+// function Input({ label, name, value, onChange }) {
+//     return (
+//       <div>
+//         <label className="block text-left text-white font-semibold">{label}</label>
+//         <input
+//           type="text"
+//           name={name}
+//           value={value}
+//           onChange={onChange}
+//           className="block w-full p-2 text-black rounded"
+//           required
+//         />
+//       </div>
+//     );
+//   }
   
   function Dropdown({ label, name, options = [], value, onChange }) {
     return (
@@ -85,7 +83,7 @@ function OwnerRegistrationStep2(){
             <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl '>
                 {/*Title */}
                 <div className='flex flex-col items-center mb-4'>
-                    <img src={title}></img>
+                    <img src={title} alt='title'></img>
                     <p className='pt-4'>Now fill out the information on why you need to part way for your pet!</p>
                 </div>
 
@@ -103,7 +101,7 @@ function OwnerRegistrationStep2(){
                         className='' 
                         disabled={!isFormValid}
                     >
-                        <img src={Submit} className={!isFormValid ? 'opacity-50' : ''}></img>
+                        <img src={Submit} alt='submit' className={!isFormValid ? 'opacity-50 cursor-not-allowed' : 'cursor-allowed'}></img>
                     </button>
                 </div>
                 

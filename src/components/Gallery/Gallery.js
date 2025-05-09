@@ -65,7 +65,7 @@ function Gallery() {
       <section className="bg-[#fff29c] py-12 px-4 font-saira text-center min-h-screen">
         
       <div className='flex flex-col items-center pb-5'>
-        <img src={title} className='h-auto w-auto'></img>
+        <img src={title} alt='title' className='h-auto w-auto'></img>
       </div>
         
         {/* Filter */}
