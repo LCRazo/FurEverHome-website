@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Next from '../assets/nextbutton.svg'
 import title from '../assets/OwnerRegistration.svg';
+import { streetSuffix } from '../../data/petBreeds';
 // import desc from '../assets/AdopterRegistrationDesc2.svg';
 // import next from '../assets/NextButton.svg';
 
@@ -50,17 +51,28 @@ function OwnerRegistrationStep1(){
     const navigate = useNavigate();
 
     const handleNext = () => {
+      if (!isFormValid) {
+        alert('Please fill out all fields!');
+        return;
+      }
+      setTimeout(() => {
         navigate('/api/owner/register/step2');
+      }, 1500);
     };
 
     const [formData, setFormData] = useState({
-        name: '',
+        firstName: '',
+        lastName: '',
         livingSituation: '',
         householdSize: '',
         jobType: '',
         jobTitle: '',
         petCount: '',
         phoneNumber: '',
+        address: '',
+        streetSuffix: '',
+        city: '',
+        state: '',
         location: '',
         adopterPhoto: null,
     });
@@ -97,7 +109,6 @@ function OwnerRegistrationStep1(){
     const livingOptions = ['House', 'Apartment', 'Recreational Vehicle (RV)','Condo'];
     const householdSize = ['1', '2','3','4','5','6+'];
     const jobType = ['Full-Time', 'Part-Time', 'Unemployed','Student'];
-    const jobTitle = ['Engineer', 'Teacher', 'Manager', 'Other'];
     const petCount = ['0','1','2','3+'];
     const locations = ['Urban', 'Suburban', 'Rural'];
 
@@ -111,11 +122,13 @@ function OwnerRegistrationStep1(){
 
 
                 <div>
-                    <Input label="Name *" name="name" value={formData.name} onChange={handleChange}/>
+                    <Input label="First Name *" name="firstName" value={formData.firstName} onChange={handleChange}/>
+                    <Input label="Last Name *" name="lastName" value={formData.lastName} onChange={handleChange} />
                     <Dropdown label="Living Situation *" name="livingSituation" options={livingOptions} value={formData.livingSituation} onChange={handleChange}/>
                     <Dropdown label="Household Size *" name="householdSize" options={householdSize} value={formData.householdSize} onChange={handleChange}/>
                     <Dropdown label="Job Type *" name="jobType" options={jobType} value={formData.jobType} onChange={handleChange}/>
-                    <Dropdown label="Job Title *" name="jobTitle" options={jobTitle} value={formData.jobTitle} onChange={handleChange}/>
+                    {/* <Dropdown label="Job Title *" name="jobTitle" options={jobTitle} value={formData.jobTitle} onChange={handleChange}/> */}
+                    <Input label="Job Title *" name="jobTitle" value={formData.jobTitle} onChange={handleChange} />
                     <Dropdown label="Number of Pets *" name="petCount" options={petCount} value={formData.petCount} onChange={handleChange}/>
                     <Input 
                         label="Phone Number *" 
@@ -123,6 +136,10 @@ function OwnerRegistrationStep1(){
                         value={formData.phoneNumber} 
                         onChange={handlePhoneNumberChange} 
                     />
+                    <Input label="Address *" name='address' value={formData.address} onChange={handleChange}/>
+                    <Dropdown label="Street Suffix *" name="streetSuffix" options={streetSuffix} value={formData.streetSuffix} onChange={handleChange}/>
+                    <Input label="City *" name='city' value={formData.city} onChange={handleChange}/>
+                    <Input label="State *" name='state' value={formData.state} onChange={handleChange} />
                     <Dropdown label="Location *" name="location" options={locations} value={formData.location} onChange={handleChange} />
                 </div>
 
@@ -149,10 +166,9 @@ function OwnerRegistrationStep1(){
                         className='' 
                         disabled={!isFormValid}
                     >
-                        <img src={Next} className={!isFormValid ? 'opacity-50' : ''}></img>
+                        <img src={Next} alt='submit' className={!isFormValid ? 'opacity-50: cursor-not-allowed' : 'cursor'}></img>
                     </button>
                 </div>
-
             </section>
     )
 };
