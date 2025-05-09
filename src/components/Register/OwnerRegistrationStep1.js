@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Next from '../assets/NextButton.svg'
+import Next from '../assets/nextbutton.svg'
 import title from '../assets/OwnerRegistration.svg';
 // import desc from '../assets/AdopterRegistrationDesc2.svg';
 // import next from '../assets/NextButton.svg';
@@ -84,7 +84,7 @@ function OwnerRegistrationStep1(){
             <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl '>
                 {/*Title */}
                 <div className='flex flex-col items-center mb-4'>
-                    <img src={title}></img>
+                    <img src={title} alt='title'></img>
                     <p className='pt-4'>Let’s get to know you first! Fill out the following background information.</p>
                 </div>
 
@@ -108,7 +108,7 @@ function OwnerRegistrationStep1(){
                 {/*Buttons */}
                 <div className='pt-4 flex justify-center space-x-4'>
                     <button onClick={handleNext} className=''>
-                        <img src={Next}></img>
+                        <img src={Next} alt='next'></img>
                     </button>
                 </div>
 

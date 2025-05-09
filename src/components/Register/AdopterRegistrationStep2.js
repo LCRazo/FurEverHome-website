@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import title from '../assets/AdopterRegistration.svg';
-import desc from '../assets/AdopterRegistrationDesc2.svg';
-import next from '../assets/NextButton.svg';
+import next from '../assets/nextbutton.svg';
 
 
 function Input({ label, name, value, onChange }) {
@@ -82,9 +81,10 @@ function AdopterRegistrationStep2(){
     const locations = ['Urban', 'Suburban', 'Rural'];
 
     return(
-            <section className='bg-deaf51 min-h-screen py-12 px-4 text-center'>
+            <section className='bg-deaf51 min-h-screen py-12 px-4 text-center text-white font-saira text-xl '>
                 <img src={title} alt="title" className="w-full mb-6" />
-                <img src={desc} alt="desc" className="mx-auto mb-10" />
+                <p className='pt-4 text-2xl font-bold '>Let's get to know you first! Fill out the following background information.</p>
+                
 
                 <div>
                     <Input label="Name *" name="name" value={formData.name} onChange={handleChange}/>

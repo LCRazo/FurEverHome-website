@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Logo from '../assets/petRegisterLogo.svg'
-import Next from '../assets/NextButton.svg'
+import Next from '../assets/nextbutton.svg'
 import {useNavigate} from 'react-router-dom';
 import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
 
@@ -92,7 +92,7 @@ useEffect(() => {
       <div classname='' >
           {/*Title */}
         <div className='flex flex-col items-center mb-4'>
-            <img src={Logo}></img>
+            <img src={Logo} alt='logo'></img>
             <p className='pt-4'>Let’s get to know your pet! Fill out the following background information.</p>
         </div>
 
@@ -137,7 +137,7 @@ useEffect(() => {
         {/*Buttons */}
         <div className='pt-4 flex justify-center space-x-4'>
           <button onClick={handleNext} className=''>
-              <img src={Next}></img>
+              <img src={Next} alt='next'></img>
           </button>
         </div>
         

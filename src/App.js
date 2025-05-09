@@ -19,6 +19,8 @@ import OwnerRegistrationStep2 from './components/Register/OwnerRegistrationStep2
 import AdopterRegistrationStep1 from './components/Register/AdopterRegistrationStep1';
 import AdopterRegistrationStep2 from './components/Register/AdopterRegistrationStep2';
 import AdopterRegistrationStep3 from './components/Register/AdopterRegistrationStep3';
+import OwnerProfile from './components/Profiles/ownerProfile';
+import AdopterProfile from './components/Profiles/adopterProfile';
 import EventScheduler from './components/Events/EventScheduler';
 
 function HomePage() {
@@ -55,6 +57,8 @@ function App() {
           <Route path='/api/adopter/register/step2' element={<AdopterRegistrationStep2/>}></Route>
           <Route path='/api/adopter/register/step3' element={<AdopterRegistrationStep3/>}></Route>
           <Route path='/api/event/schedule' element={<EventScheduler/>}></Route>
+          <Route path='/api/profile/owner'element={<OwnerProfile/>}></Route>
+          <Route path='/api/profile/adopter'element={<AdopterProfile/>}></Route>
         </Routes>
   </div>
   );

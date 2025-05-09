@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import title from '../assets/AdopterRegistration.svg';
-import next from '../assets/NextButton.svg';
-import desc from '../assets/AdopterRegistrationDesc3.svg';
+import next from '../assets/nextbutton.svg';
 import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
 
 function Dropdown({ label, name, options = [], value, onChange }) {
@@ -85,7 +84,6 @@ function AdopterRegistrationStep3(){
   const FixedOptions = ['Yes', 'No'];
 
   const handleNext = () => {
-    // setAdopterStatus(true); // if you're still using this
     setShowSuccessPopup(true); // show popup
   
     setTimeout(() => {
@@ -95,9 +93,9 @@ function AdopterRegistrationStep3(){
   
 
   return(
-      <section className='bg-deaf51 min-h-screen py-12 px-4 text-center'>
+      <section className='bg-deaf51 min-h-screen py-12 px-4 text-center text-white font-saira text-xl '>
         <img src={title} alt="title" className="w-full mb-6" />
-        <img src={desc} alt="desc" className="mx-auto mb-10" />
+          <p className='pt-4 text-2xl font-bold '>Now fill out the following qualities you are looking for in a pet!</p>
         <div>
           <Dropdown label="Species *" name="species" options={species} value={formData.species} onChange={handleChange}/>
           {formData.species && (

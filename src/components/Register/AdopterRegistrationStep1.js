@@ -1,8 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import title from '../assets/AdopterRegistration.svg';
-import desc from '../assets/AdopterRegistrationDesc1.svg';
-import next from '../assets/NextButton.svg';
+import next from '../assets/nextbutton.svg';
 
 function AdopterRegistrationStep1(){
     const navigate = useNavigate();
@@ -12,11 +11,11 @@ function AdopterRegistrationStep1(){
     };
 
     return(
-        <section className='bg-deaf51 min-h-screen py-12 px-4 text-center object-fill'>
-            <img src={title} alt="title" className="w-full"></img>
-
-            <div className="w-full">
-                <img src={desc} alt="desc" className="mx-auto"></img>
+        <section className='bg-deaf51 min-h-screen py-12 px-4 text-center text-white font-saira text-xl '>
+            {/* <img src={title} alt="title" className="w-full"></img> */}
+            <div className='flex flex-col items-center mb-4'>
+                    <img src={title} alt='title'></img>
+                    <p className='pt-4 text-2xl font-bold '>Create a username and password.</p>
             </div>
             
             <div className='content-justify-center'>
