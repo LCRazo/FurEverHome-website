@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import PetCard from './Pet_Card';
 import PetProfileModal from './Pet_Profile_Modal';
 import pets from './Pet_Data';
@@ -6,11 +7,31 @@ import PetFilter from './Pet_Filter';
 
 function Gallery() {
 
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const [filters, setFilters] = useState({
       species: '',
       gender:'',
       ageRange:'',
     });
+
+    // Apply filters from URL on first render or when URL changes
+    useEffect(() => {
+    const species = searchParams.get('species') || '';
+    const gender = searchParams.get('gender') || '';
+    const ageRange = searchParams.get('age') || '';
+
+    setFilters({ species, gender, ageRange });
+    }, [searchParams]);
+
+      const handleFilterChange = (newFilters) => {
+        setFilters(newFilters);
+        setSearchParams({
+          ...(newFilters.species && { species: newFilters.species}),
+          ...(newFilters.gender && { gender: newFilters.gender }),
+          ...(newFilters.ageRange && { age: newFilters.ageRange }),
+        });
+      };
 
     const [selectedPet, setSelectedPet] = useState(null);
   
@@ -19,9 +40,11 @@ function Gallery() {
         ? filters.species === 'other'
           ? pet.species !== 'dog' && pet.species !== 'cat'
           : pet.species === filters.species
-        : true;
+          : true;
 
-      const matchesGender = filters.gender ? pet.gender === filters.gender : true;
+      const matchesGender = filters.gender 
+        ? pet.gender === filters.gender 
+        : true;
   
       const age = pet.ageInMonths;
       const matchesAge =
@@ -42,7 +65,7 @@ function Gallery() {
         <h1 className="text-4xl font-bold mb-10">Pet Gallery</h1>
         
         {/* Filter */}
-        <PetFilter filters={filters} onChange={setFilters} />
+        <PetFilter filters={filters} onChange={handleFilterChange} />
 
         {/* Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
