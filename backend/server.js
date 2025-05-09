@@ -11,6 +11,7 @@ const petRoutes = require('./routes/pets'); // adjust path
 
 const app = express();
 
+app.use(express.json());
 // use urlencoding for form POSTs to handle data
 app.use(express.urlencoded({extended: false}));//uses traditional query passing. Allows acess to data submitted by users 
 

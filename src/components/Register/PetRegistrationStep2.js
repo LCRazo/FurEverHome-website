@@ -27,11 +27,7 @@ function Dropdown({ label, name, options = [], value, onChange }) {
 }
 
 function PetRegistrationStep2() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-  const step1Data = location.state || {};
-
+ 
   const [formData, setFormData] = useState({
       gender: '',
       size: '',
@@ -86,9 +82,16 @@ function PetRegistrationStep2() {
     };
     const genderOptions = ['male', 'female'];
     const sizeOptions = ['Small (up to 20lbs )', 'Medium (21-50lbs)', 'Large (51-100lbs)', 'Extra-Large (over 100lbs)'];
-    const AgeOptions = ['Less than 1 year','1-4 years','4-8 years', '8+ years'];
+    const ageOptions = ['Less than 1 year','1-4 years','4-8 years', '8+ years'];
     const VaccineOptions = ['Yes', 'No'];
     const FixedOptions = ['Yes', 'No'];
+
+    const isFormValid = Object.values(formData).every(value => value !== '' && value !== null);
+    const navigate = useNavigate();
+    const location = useLocation();
+   
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+    const step1Data = location.state || {};
 
   return(
     <section className= "bg-pink-300 min-h-screen py-12 px-4 text-center text-white font-saira text-xl ">
@@ -99,17 +102,17 @@ function PetRegistrationStep2() {
         </div>
          {/*Form */}
          <div className='flex-col items-center'>
-         <Dropdown label="Gender" name="Gender" options={genderOptions} value={formData.gender} onChange={handleChange}/>
-          <Dropdown label="Size" name="Size" options={sizeOptions} value={formData.size} onChange={handleChange} />
-          <Dropdown label="Age" name="Age" options={AgeOptions} value={formData.age} onChange={handleChange}/>
-          <Dropdown label="Vaccinated?" name="Vaccines" options={VaccineOptions} value={formData.vaccines} onChange={handleChange}/>
-          <Dropdown label="Spayed/Neutered?" name="Fixed" options={FixedOptions} value={formData.fixed} onChange={handleChange}/>
+         <Dropdown label="Gender*" name="gender" options={genderOptions} value={formData.gender} onChange={handleChange}/>
+          <Dropdown label="Size*" name="size" options={sizeOptions} value={formData.size} onChange={handleChange} />
+          <Dropdown label="Age*" name="age" options={ageOptions} value={formData.age} onChange={handleChange}/>
+          <Dropdown label="Vaccinated?*" name="vaccinated" options={VaccineOptions} value={formData.vaccinated} onChange={handleChange}/>
+          <Dropdown label="Spayed/Neutered?*" name="fixed" options={FixedOptions} value={formData.fixed} onChange={handleChange}/>
 
         </div>
          {/*Buttons */}
          <div className='pt-4'>
           <button className='' onClick={handleSubmit}>
-              <img src={Submit}></img>
+              <img src={Submit} className={!isFormValid ? 'opacity-50' : ''}></img>
           </button>
         </div>
 

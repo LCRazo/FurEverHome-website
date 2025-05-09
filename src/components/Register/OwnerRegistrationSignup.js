@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import title from '../assets/AdoptRegistration.png';
+import title from '../assets/OwnerRegistration.svg';
 import desc from '../assets/AdopterRegistrationDesc1.svg';
 import next from '../assets/nextbutton.svg';
 
-function AdopterRegistrationStep1(){
+function OwnerRegistrationSignup(){
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -24,12 +24,11 @@ function AdopterRegistrationStep1(){
             alert('Password must be at least 8 characters long');
             return;
         }
-        navigate('/api/adopter/register/step2');
+        navigate('/api/owner/register/step1');
     };
 
     return(
-
-        <section className='bg-deaf51 min-h-screen py-12 px-4 text-center text-white font-saira text-xl object-fill'>
+        <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl object-fill'>
             <img src={title} alt="title" className="w-full"></img>
 
             <div className="w-full">
@@ -72,4 +71,4 @@ function AdopterRegistrationStep1(){
     )
 };
 
-export default AdopterRegistrationStep1;
+export default OwnerRegistrationSignup;

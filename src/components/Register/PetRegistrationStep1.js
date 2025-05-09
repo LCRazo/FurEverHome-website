@@ -113,7 +113,7 @@ useEffect(() => {
         </div>
 
         {/*Form */}
-        <div className='flex-col items-center'>
+        <div className='flex flex-col '>
           <label className="block text-left text-white">Name*</label>
           <input 
                 name="name" 
@@ -131,7 +131,7 @@ useEffect(() => {
           <Dropdown label="How long can you care for your pet?* " name="urgency" options={urgencyOptions} value={formData.urgency} onChange={handleChange} required/>
 
 
-          <label className="block text-left text-white">Web Photo*</label>
+          <label className="block text-left text-white">Event Photo*</label>
               <input
                 name="webPhoto"
                 type="file"
@@ -140,7 +140,7 @@ useEffect(() => {
                 className="block w-full mb-2 p-2 text-black bg-white rounded"
               />
               {previewImage && (
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-4 mt-4">
                   <img src={previewImage} alt="Preview" className="max-w-xs max-h-40 rounded" />
                 </div>
               )}

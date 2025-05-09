@@ -14,6 +14,7 @@ import Footer from './components/Footer/Footer';
 import PetRegistrationStep1 from './components/Register/PetRegistrationStep1';
 import PetRegistrationStep2 from './components/Register/PetRegistrationStep2';
 import PetGallery from './components/Gallery/Gallery';
+import OwnerRegistrationSignup from './components/Register/OwnerRegistrationSignup';
 import OwnerRegistrationStep1 from './components/Register/OwnerRegistrationStep1';
 import OwnerRegistrationStep2 from './components/Register/OwnerRegistrationStep2';
 import AdopterRegistrationStep1 from './components/Register/AdopterRegistrationStep1';
@@ -22,6 +23,8 @@ import AdopterRegistrationStep3 from './components/Register/AdopterRegistrationS
 import OwnerProfile from './components/Profiles/ownerProfile';
 import AdopterProfile from './components/Profiles/adopterProfile';
 import EventScheduler from './components/Events/EventScheduler';
+import LoginRehome from './components/Login/login.js';
+import LoginAdopt from './components/Login/loginAdopt.js'
 
 function HomePage() {
   return(
@@ -48,9 +51,12 @@ function App() {
   <div className="header">
         <Routes>
           <Route path='/' element={<HomePage/>}></Route>
+          <Route path='/api/pets/register/login' element={<LoginRehome/>}></Route>
           <Route path='/api/pets/register/step1' element={<PetRegistrationStep1/>}></Route>
           <Route path='/api/pets/register/step2' element={<PetRegistrationStep2/>}></Route>
+          <Route path='/api/pets/adopt/login' element={<LoginAdopt/>}></Route>
           <Route path='/api/pets/adopt' element={<PetGallery/>}></Route>
+          <Route path='/api/owner/register/signup' element={<OwnerRegistrationSignup/>}></Route>
           <Route path='/api/owner/register/step1' element={<OwnerRegistrationStep1/>}></Route>
           <Route path='/api/owner/register/step2' element={<OwnerRegistrationStep2/>}></Route>
           <Route path='/api/adopter/register/step1' element={<AdopterRegistrationStep1/>}></Route>

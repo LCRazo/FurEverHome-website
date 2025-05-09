@@ -27,7 +27,7 @@ function Pets() {
                         {/*Button */}
                         <Link 
                             to='/api/pets/adopt?species=dog'
-                            className='mt-4 no-underline'
+                            className='mt-4 hover:no-underline no-underline'
                         >
                         <span className=' bg-deaf51 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-yellow-300 transition-colors'>Dogs</span>
                         </Link>
@@ -40,7 +40,7 @@ function Pets() {
                          {/*Button */}
                          <Link 
                          to='/api/pets/adopt?species=cat'
-                         className='mt-4 no-underline'
+                         className='mt-4 hover:no-underline no-underline'
                          >
                         <span className=' bg-a07d text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-green-300 transition-colors '>Cats</span>
                         </Link>
@@ -54,7 +54,7 @@ function Pets() {
                  {/*Button */}
                  <Link 
                  to='/api/pets/adopt?species=other'
-                 className='mt-4  no-underline'>
+                 className='mt-4 hover:no-underline no-underline'>
                 <span className='bg-cf4350 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-red-700 transition-colors'>Others</span>
                 </Link>
                 </div>
