@@ -105,7 +105,7 @@ useEffect(() => {
 
   return(
     <section className= "bg-pink-300 min-h-screen py-12 px-4 text-center text-white font-saira text-xl ">
-      <div classname='' >
+      <div className='' >
           {/*Title */}
         <div className='flex flex-col items-center mb-4'>
             <img src={Logo} alt='logo'></img>
@@ -153,7 +153,7 @@ useEffect(() => {
             className='' 
             disabled={!isFormValid}
           >
-              <img src={Next} className={!isFormValid ? 'opacity-50' : ''}></img>
+              <img src={Next} alt='next' className={!isFormValid ? 'opacity-50 cursor-not-allowed' : 'cursor-allowed'}></img>
           </button>
         </div>
         

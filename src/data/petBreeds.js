@@ -15,3 +15,6 @@ export const reptileBreeds = ['Frog', 'Turtle', 'Snake','Iguana','Gecko','Chamel
 export const birdBreeds = ['Parrot','Parakeet','Cockatoo','Macaw','Pigeon','Budgie','Dove','Other'];
 export const rodentBreeds = ['Hamster','Guinea Pig', 'Gerbil', 'Rat', 'Chinchilla', 'Sugar Glider', 'Chipmunk', 'Ferret','Other'];
 export const otherBreeds = ['Fish', 'Horse','Goat','Pig','Cow','Other'];
+
+export const streetSuffix = ['Aly','Avenue','Blvd','Brdg','Btm','Cir','Cres','Crk','Cv',
+  'Cyn','Dr','Exp','Fld','Fwy','Gtwy','Grv','Hwy','Hts','Ln','Prk','Rd','Rvr','St'];

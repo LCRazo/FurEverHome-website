@@ -131,7 +131,7 @@ function AdopterRegistrationStep3() {
       {showSuccessPopup && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded shadow-lg text-center">
-            <p className="text-green-600 font-semibold text-xl">🎉 Profile created successfully!</p>
+            <p className="text-black-600 font-semibold text-xl">🎉 Profile created successfully!</p>
           </div>
         </div>
       )}
