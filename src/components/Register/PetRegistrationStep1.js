@@ -59,7 +59,7 @@ function PetRegistrationStep1() {
     breed: '',
     workingClass: '',
     urgency: '',
-    webPhoto: ''
+    eventPhoto: ''
   });
 
   const [previewImage, setPreviewImage] = useState(null);
@@ -131,7 +131,7 @@ useEffect(() => {
           <Dropdown label="How long can you care for your pet?* " name="urgency" options={urgencyOptions} value={formData.urgency} onChange={handleChange} required/>
 
 
-          <label className="block text-left text-white">Web Photo*</label>
+          <label className="block text-left text-white">Event Photo*</label>
               <input
                 name="webPhoto"
                 type="file"
