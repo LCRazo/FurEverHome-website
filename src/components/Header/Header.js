@@ -4,6 +4,7 @@ import AdoptPet from '../assets/Adopt_A_Pet.svg';
 import GotLove from '../assets/Got Love_ Give Love..svg';
 import Text from '../assets/homepage-desc.svg';
 import pet from '../assets/homepage-dog.svg';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return(
@@ -23,6 +24,7 @@ function Header() {
         <img src={GotLove} alt="GotLoveSVG" className="h-20 md:h-auto" />
         <img src={AdoptPet} alt="AdoptAPetSVG" />
         <img src={Text} alt="textSVG" />
+        <Link to='/api/login?choice=login' className="mt-4 bg-white text-a06EB1 font-saira text-2xl px-5 py-2 rounded-md transition no-underline hover:text-a06EB1">Login</Link>
       </div>
       
     </section>

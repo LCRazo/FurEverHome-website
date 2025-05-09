@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import next from '../assets/nextbutton.svg';
 import title from '../assets/Login.svg'
 
 function LoginAdopt(){
     const navigate = useNavigate();
+    const location = useLocation();
+
+    //extract query
+    const queryParams = new URLSearchParams(location.search);
+    const redirect = queryParams.get('choice');
 
     const [formData, setFormData] = useState({
         username: '',
@@ -23,7 +28,15 @@ function LoginAdopt(){
             alert('Password must be at least 8 characters long');
             return;
         }
-        navigate('/api/pets/adopt');
+        if(redirect === 'adopt'){
+            navigate(`/api/pets/adopt`);
+        } else if (redirect === 'rehome') {
+            navigate(`/api/pets/register/step1`);
+        } else {
+            alert('unable to redirect');
+        }
+        
+      
     };
 
     return(
@@ -31,11 +44,6 @@ function LoginAdopt(){
             
             <div className='flex flex-col justify-center items-center pb-5'>
                 <img src={title} alt="title" className="w-auto h-auto"></img>
-            </div>
-        
- 
-            <div className="w-full text-3xl">
-                <p>Create an username and password</p>
             </div>
             
             <div className='content-justify-center'>
