@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Logo from '../assets/petRegisterLogo.svg'
-import Next from '../assets/NextButton.svg'
+import Next from '../assets/nextbutton.svg'
 import {useNavigate} from 'react-router-dom';
 import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
 
@@ -41,6 +41,18 @@ function PetRegistrationStep1() {
       setFormData({...formData, [e.target.name]: e.target.value});
   }
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData({ ...formData, webPhoto: file });
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPreviewImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     species: '',
@@ -49,6 +61,10 @@ function PetRegistrationStep1() {
     urgency: '',
     webPhoto: ''
   });
+
+  const [previewImage, setPreviewImage] = useState(null);
+
+  const isFormValid = Object.values(formData).every(value => value !== '' && value !== null);
 
 useEffect(() => {
     async function loadBreeds() {
@@ -111,15 +127,6 @@ useEffect(() => {
             <Dropdown label="Breed *" name="breed" options={breedOptions} value={formData.breed} onChange={handleChange}/>
           )}
           <Dropdown label="Working Class *" name="workingClass" options={workClassOptions} value={formData.workingClass} onChange={handleChange} />
-         
-          
-          <label className="block text-left text-white">Breed*</label>
-          <input 
-                name="breed"  
-                value={formData.breed} 
-                onChange={handleChange} 
-                className="block w-full mb-2 p-2 text-black"
-                required/>
 
           <Dropdown label="How long can you care for your pet?* " name="urgency" options={urgencyOptions} value={formData.urgency} onChange={handleChange} required/>
 
@@ -129,15 +136,24 @@ useEffect(() => {
                 name="webPhoto"
                 type="file"
                 accept="image/*"
-                onChange={(e) => setFormData({...formData, webPhoto: e.target.files[0]})}
+                onChange={handleFileChange}
                 className="block w-full mb-2 p-2 text-black bg-white rounded"
               />
+              {previewImage && (
+                <div className="flex justify-center mb-4">
+                  <img src={previewImage} alt="Preview" className="max-w-xs max-h-40 rounded" />
+                </div>
+              )}
         </div>
 
         {/*Buttons */}
         <div className='pt-4 flex justify-center space-x-4'>
-          <button onClick={handleNext} className=''>
-              <img src={Next}></img>
+          <button 
+            onClick={handleNext} 
+            className='' 
+            disabled={!isFormValid}
+          >
+              <img src={Next} className={!isFormValid ? 'opacity-50' : ''}></img>
           </button>
         </div>
         
