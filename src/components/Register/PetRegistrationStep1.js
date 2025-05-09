@@ -59,7 +59,7 @@ function PetRegistrationStep1() {
     breed: '',
     workingClass: '',
     urgency: '',
-    eventPhoto: ''
+    webPhoto: ''
   });
 
   const [previewImage, setPreviewImage] = useState(null);
@@ -140,7 +140,7 @@ useEffect(() => {
                 className="block w-full mb-2 p-2 text-black bg-white rounded"
               />
               {previewImage && (
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-4 mt-4">
                   <img src={previewImage} alt="Preview" className="max-w-xs max-h-40 rounded" />
                 </div>
               )}

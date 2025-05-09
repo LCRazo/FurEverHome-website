@@ -4,6 +4,7 @@ import PetCard from './Pet_Card';
 import PetProfileModal from './Pet_Profile_Modal';
 import pets from './Pet_Data';
 import PetFilter from './Pet_Filter';
+import title from '../assets/Pet Gallery.svg'
 
 function Gallery() {
 
@@ -62,7 +63,10 @@ function Gallery() {
     
     return (
       <section className="bg-[#fff29c] py-12 px-4 font-saira text-center min-h-screen">
-        <h1 className="text-4xl font-bold mb-10">Pet Gallery</h1>
+        
+      <div className='flex flex-col items-center pb-5'>
+        <img src={title} className='h-auto w-auto'></img>
+      </div>
         
         {/* Filter */}
         <PetFilter filters={filters} onChange={handleFilterChange} />

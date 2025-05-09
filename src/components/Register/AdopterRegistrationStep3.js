@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import title from '../assets/AdopterRegistration.svg';
-import next from '../assets/nextbutton.svg';
+import submit from '../assets/submitbutton.svg';
 import desc from '../assets/AdopterRegistrationDesc3.svg';
 import {dogBreeds,catBreeds,reptileBreeds,rodentBreeds,birdBreeds,otherBreeds } from '../../data/petBreeds';
 
@@ -125,7 +125,7 @@ function AdopterRegistrationStep3() {
           onClick={handleNext}
           disabled={!isFormValid}
         >
-          <img src={next} alt="Next button" className={!isFormValid ? 'opacity-50' : ''} />
+          <img src={submit} alt="Next button" className={!isFormValid ? 'opacity-50' : ''} />
         </button>
       </div>
 

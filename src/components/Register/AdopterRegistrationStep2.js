@@ -136,7 +136,7 @@ function AdopterRegistrationStep2(){
                         required 
                     />
                     {previewImage && (
-                        <div className="flex justify-center mb-4">
+                        <div className="flex justify-center mb-4 mt-4">
                             <img src={previewImage} alt="Preview" className="max-w-xs max-h-40 rounded" />
                         </div>
                     )}

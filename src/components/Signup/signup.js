@@ -17,13 +17,14 @@ function signUp(){
                 </div>
 
                 <div className='mt-20 flex flex-col items-center relative w-[300px] md:w-[400px]'>
+                    
                     <img src={pawsprint} alt='pawprint' className='ml-40 shadow-outline animate-bounce'></img>
                     <img src={pawsprint2} alt='pawprint2' className='mt-3 mr-40 shadow-outline animate-bounce'></img>     
                            
                     {/*Owner Buttons */}
                     <div className='absolute top-[16%] left-[70%]'>
                         <h2 className=' text-white'>OWNER</h2>
-                        <Link to='/api/owner/register/step1' className='hover:underline text-white text-2xl transition no-underline'>Sign Up</Link>
+                        <Link to='/api/owner/register/signup' className='hover:underline text-white text-2xl transition no-underline'>Sign Up</Link>
                     </div>
                    
                     {/*Adopter Button */}
