@@ -105,7 +105,7 @@ function OwnerRegistrationStep1(){
             <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl '>
                 {/*Title */}
                 <div className='flex flex-col items-center mb-4'>
-                    <img src={title}></img>
+                    <img src={title} alt='title'></img>
                     <p className='pt-4'>Let’s get to know you first! Fill out the following background information.</p>
                 </div>
 

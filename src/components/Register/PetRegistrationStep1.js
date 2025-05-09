@@ -108,7 +108,7 @@ useEffect(() => {
       <div classname='' >
           {/*Title */}
         <div className='flex flex-col items-center mb-4'>
-            <img src={Logo}></img>
+            <img src={Logo} alt='logo'></img>
             <p className='pt-4'>Let’s get to know your pet! Fill out the following background information.</p>
         </div>
 

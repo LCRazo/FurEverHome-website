@@ -28,6 +28,7 @@ function AdopterRegistrationStep1(){
     };
 
     return(
+
         <section className='bg-deaf51 min-h-screen py-12 px-4 text-center text-white font-saira text-xl object-fill'>
             <img src={title} alt="title" className="w-full"></img>
 

@@ -85,7 +85,6 @@ function AdopterRegistrationStep3() {
   }, []);
 
   const handleNext = () => {
-    // setAdopterStatus(true); // if you're still using this
     setShowSuccessPopup(true); // show popup
 
     setTimeout(() => {
@@ -105,7 +104,8 @@ function AdopterRegistrationStep3() {
   return (
     <section className='bg-deaf51 min-h-screen py-12 px-4 text-center'>
       <img src={title} alt="title" className="w-full mb-6" />
-      <img src={desc} alt="desc" className="mx-auto mb-10" />
+      <p className='pt-4 text-2xl text-white font-bold '>Now fill out the qualities you're looking for in a pet!</p>
+      {/* <img src={desc} alt="desc" className="mx-auto mb-10" /> */}
       <div>
         <Dropdown label="Species *" name="species" options={species} value={formData.species} onChange={handleChange} />
         {formData.species && (
