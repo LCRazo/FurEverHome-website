@@ -5,6 +5,11 @@ import title from '../assets/Login.svg'
 
 function Login(){
     const navigate = useNavigate();
+    const location = useLocation();
+    
+    //extract query
+    const queryParams = new URLSearchParams(location.search);
+    const redirect = queryParams.get('choice');
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -28,7 +33,13 @@ function Login(){
         setShowSuccessPopup(true); // show popup
 
         setTimeout(() => {
-        navigate('/');
+            if(redirect === 'login'){
+                navigate(`/`);
+            } else if (redirect === 'event') {
+                navigate(`/api/event/schedule`);
+            } else {
+                alert('unable to redirect');
+            }
         }, 1500); // wait 1.5s before navigating
         
       
