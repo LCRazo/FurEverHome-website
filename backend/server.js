@@ -20,12 +20,12 @@ app.use(cors({
 }));
 
 //connection to routes
-const appRoutes = require("./routes/applicationRoutes");
-const authRoutes = require("./routes/authRoutes");
-const eventRoutes = require("./routes/notificationRoutes");
-const notificationRoutes = require("./routes/notificationRoutes");
-const petRoutes = require("./routes/petRoutes");
-const userRoutes = require("./routes/userRoutes");
+//const appRoutes = require("./routes/applicationRoutes");
+//const authRoutes = require("./routes/authRoutes");
+//const eventRoutes = require("./routes/notificationRoutes");
+//const notificationRoutes = require("./routes/notificationRoutes");
+//const petRoutes = require("./routes/petRoutes");
+//const userRoutes = require("./routes/userRoutes");
 
 //MAY NEED CHANGE TO APPROPRIATE TYPE
 //app.use("/app", appRoutes);
