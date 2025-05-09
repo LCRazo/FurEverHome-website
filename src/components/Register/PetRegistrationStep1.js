@@ -113,7 +113,7 @@ useEffect(() => {
         </div>
 
         {/*Form */}
-        <div className='flex-col items-center'>
+        <div className='flex flex-col '>
           <label className="block text-left text-white">Name*</label>
           <input 
                 name="name" 

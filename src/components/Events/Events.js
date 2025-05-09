@@ -28,7 +28,7 @@ function Events() {
                             <img src={eventSlang} alt="eventSlang"  className="" ></img>
                         </div>
                         <p className='mt-4 ml-3 text-white font-saira text-2xl '>Create local pet events where adopters can meet your adorable animals from the website in person. It's the perfect chance to connect, play, and find your fur-ever match!</p>
-                        <Link to='/api/event/schedule' className='mt-4 bg-a87834 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-a06EB1 transition-colors'>Create Event</Link>
+                        <Link to='/api/event/schedule' className='mt-4 bg-a87834 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-a06EB1 transition-colors no-underline hover:no-underline'>Create Event</Link>
             </div>
            
             </div>

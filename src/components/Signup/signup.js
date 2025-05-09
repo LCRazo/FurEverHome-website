@@ -23,13 +23,13 @@ function signUp(){
                     {/*Owner Buttons */}
                     <div className='absolute top-[16%] left-[70%]'>
                         <h2 className=' text-white'>OWNER</h2>
-                        <Link to='/api/owner/register/step1' className='hover:underline text-white text-2xl'>Sign Up</Link>
+                        <Link to='/api/owner/register/step1' className='hover:underline text-white text-2xl transition no-underline'>Sign Up</Link>
                     </div>
                    
                     {/*Adopter Button */}
                     <div className='absolute top-[67%] left-[25%]'>
                     <h2 className=' text-white'>ADOPTER</h2>
-                    <Link to= '/api/adopter/register/step1' className='hover:underline text-white text-2xl'> Sign Up</Link>
+                    <Link to= '/api/adopter/register/step1' className='hover:underline text-white text-2xl transition no-underline'> Sign Up</Link>
                     </div>
                    
   
