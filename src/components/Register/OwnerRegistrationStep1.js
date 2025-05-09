@@ -65,12 +65,33 @@ function OwnerRegistrationStep1(){
         adopterPhoto: null,
     });
 
+    const [previewImage, setPreviewImage] = useState(null);
+
+    const isFormValid = Object.values(formData).every(value => value !== '' && value !== null);
+
     const handleChange = (e) => {
         const {name, value, files} = e.target;
         setFormData({
             ...formData,
             [name]: files ? files[0] : value,
         });
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData({ ...formData, adopterPhoto: file });
+            const reader = new FileReader();
+            reader.onload = () => {
+                setPreviewImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handlePhoneNumberChange = (e) => {
+        const value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+        setFormData({ ...formData, phoneNumber: value });
     };
 
     const livingOptions = ['House', 'Apartment', 'Recreational Vehicle (RV)','Condo'];
@@ -96,19 +117,39 @@ function OwnerRegistrationStep1(){
                     <Dropdown label="Job Type *" name="jobType" options={jobType} value={formData.jobType} onChange={handleChange}/>
                     <Dropdown label="Job Title *" name="jobTitle" options={jobTitle} value={formData.jobTitle} onChange={handleChange}/>
                     <Dropdown label="Number of Pets *" name="petCount" options={petCount} value={formData.petCount} onChange={handleChange}/>
-                    <Input label="Phone Number *" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
-                    <Dropdown label="Location *" name="location" options={locations} value={formData.locations} onChange={handleChange}/>
+                    <Input 
+                        label="Phone Number *" 
+                        name="phoneNumber" 
+                        value={formData.phoneNumber} 
+                        onChange={handlePhoneNumberChange} 
+                    />
+                    <Dropdown label="Location *" name="location" options={locations} value={formData.location} onChange={handleChange} />
                 </div>
 
                 <div>
                     <label className="block text-left text-white font-semibold">Web Photo *</label>
-                    <input type="file" name="adopterPhoto" onChange={handleChange} className="block w-full p-2 text-black bg-white rounded" required />
+                    <input 
+                        type="file" 
+                        name="adopterPhoto" 
+                        onChange={handleFileChange} 
+                        className="block w-full p-2 text-black bg-white rounded" 
+                        required 
+                    />
+                    {previewImage && (
+                        <div className="flex justify-center mb-4">
+                            <img src={previewImage} alt="Preview" className="max-w-xs max-h-40 rounded" />
+                        </div>
+                    )}
                 </div>
 
                 {/*Buttons */}
                 <div className='pt-4 flex justify-center space-x-4'>
-                    <button onClick={handleNext} className=''>
-                        <img src={Next} alt='next'></img>
+                    <button 
+                        onClick={handleNext} 
+                        className='' 
+                        disabled={!isFormValid}
+                    >
+                        <img src={Next} className={!isFormValid ? 'opacity-50' : ''}></img>
                     </button>
                 </div>
 

@@ -6,6 +6,7 @@ import otherImg from '../assets/others.svg'
 import './pets.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Link } from 'react-router-dom';
 
 function Pets() {
     return (
@@ -24,7 +25,12 @@ function Pets() {
                             </img>
                         </div>
                         {/*Button */}
-                        <span className='mt-4 bg-deaf51 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-yellow-300 transition-colors'>Dogs</span>
+                        <Link 
+                            to='/api/pets/adopt?species=dog'
+                            className='mt-4 no-underline'
+                        >
+                        <span className=' bg-deaf51 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-yellow-300 transition-colors'>Dogs</span>
+                        </Link>
                 </div>
                 {/*Cats*/}
                 <div className="flex flex-col items-center">
@@ -32,7 +38,12 @@ function Pets() {
                             <img src={catImg} alt='catImage' className="object-cover w-full h-full"></img>
                         </div>
                          {/*Button */}
-                        <span className='mt-4 bg-a07d text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-green-300 transition-colors'>Cats</span>
+                         <Link 
+                         to='/api/pets/adopt?species=cat'
+                         className='mt-4 no-underline'
+                         >
+                        <span className=' bg-a07d text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-green-300 transition-colors '>Cats</span>
+                        </Link>
                 </div>
 
                 {/*Other*/}
@@ -41,7 +52,11 @@ function Pets() {
                     <img src={otherImg} alt='otherImage' className="object-cover w-full h-full"></img>
                 </div>
                  {/*Button */}
-                <span className='mt-4 bg-cf4350 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-red-700 transition-colors'>Others</span>
+                 <Link 
+                 to='/api/pets/adopt?species=other'
+                 className='mt-4  no-underline'>
+                <span className='bg-cf4350 text-white font-saira text-2xl px-5 py-2 rounded-md hover:bg-red-700 transition-colors'>Others</span>
+                </Link>
                 </div>
             </div>
       </section>

@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import title from '../assets/AdopterRegistration.svg';
-import next from '../assets/nextbutton.svg';
+import desc from '../assets/AdopterRegistrationDesc2.svg';
+import next from '../assets/NextButton.svg';
 
 
 function Input({ label, name, value, onChange }) {
@@ -65,12 +66,33 @@ function AdopterRegistrationStep2(){
         adopterPhoto: null,
     });
 
+    const [previewImage, setPreviewImage] = useState(null);
+
+    const isFormValid = Object.values(formData).every(value => value !== '' && value !== null);
+
     const handleChange = (e) => {
         const {name, value, files} = e.target;
         setFormData({
             ...formData,
             [name]: files ? files[0] : value,
         });
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFormData({ ...formData, adopterPhoto: file });
+            const reader = new FileReader();
+            reader.onload = () => {
+                setPreviewImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handlePhoneNumberChange = (e) => {
+        const value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+        setFormData({ ...formData, phoneNumber: value });
     };
 
     const livingOptions = ['House', 'Apartment', 'Recreational Vehicle (RV)','Condo'];
@@ -93,23 +115,43 @@ function AdopterRegistrationStep2(){
                     <Dropdown label="Job Type *" name="jobType" options={jobType} value={formData.jobType} onChange={handleChange}/>
                     <Dropdown label="Job Title *" name="jobTitle" options={jobTitle} value={formData.jobTitle} onChange={handleChange}/>
                     <Dropdown label="Number of Pets *" name="numberPets" options={petCount} value={formData.numberPets} onChange={handleChange}/>
-                    <Input label="Phone Number *" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
+                    <Input 
+                        label="Phone Number *" 
+                        name="phoneNumber" 
+                        value={formData.phoneNumber} 
+                        onChange={handlePhoneNumberChange} 
+                    />
                     <Input label="Address *" name="address" value={formData.address} onChange={handleChange} />
-                    {/* <Input label="Street *" name="steet" value={formData.street} onChange={handleChange}/> */}
                     <Input label="City *" name="city" value={formData.city} onChange={handleChange} />
                     <Input label="State *" name="state" value={formData.state} onChange={handleChange} />
-                    <Dropdown label="Location Type *" name="location" options={locations} value={formData.locations} onChange={handleChange}/>
+                    <Dropdown label="Location Type *" name="location" options={locations} value={formData.location} onChange={handleChange}/>
                 </div>
 
                 <div>
                     <label className="block text-left text-white font-semibold">Web Photo *</label>
-                    <input type="file" name="adopterPhoto" onChange={handleChange} className="block w-full p-2 text-black bg-white rounded" required />
+                    <input 
+                        type="file" 
+                        name="adopterPhoto" 
+                        onChange={handleFileChange} 
+                        className="block w-full p-2 text-black bg-white rounded" 
+                        required 
+                    />
+                    {previewImage && (
+                        <div className="flex justify-center mb-4">
+                            <img src={previewImage} alt="Preview" className="max-w-xs max-h-40 rounded" />
+                        </div>
+                    )}
                 </div>
 
 
                 <div className="pt-6 flex justify-center">
-                    <button type="button" className="text-white" onClick={handleNext}>
-                        <img src={next} alt="Next button" />
+                    <button 
+                        type="button" 
+                        className="text-white" 
+                        onClick={handleNext} 
+                        disabled={!isFormValid}
+                    >
+                        <img src={next} alt="Next button" className={!isFormValid ? 'opacity-50' : ''} />
                     </button>
                 </div>
 
