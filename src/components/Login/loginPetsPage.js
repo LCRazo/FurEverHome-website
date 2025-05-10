@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import submit from '../assets/submitbutton.svg';
-import title from '../assets/Login.svg'
+import next from '../assets/nextbutton.svg';
+import title from '../assets/Login.svg';
+import { useNavigate, useLocation} from 'react-router-dom'
 
 function Login(){
     const navigate = useNavigate();
     const location = useLocation();
-    
-    //extract query
+
+    //extract species from query parameter
     const queryParams = new URLSearchParams(location.search);
-    const redirect = queryParams.get('choice');
-    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+    const redirectSpecies = queryParams.get('species');
 
     const [formData, setFormData] = useState({
         username: '',
@@ -30,20 +29,14 @@ function Login(){
             return;
         }
 
-        setShowSuccessPopup(true); // show popup
-
-        setTimeout(() => {
-            if(redirect === 'login'){
-                navigate(`/`);
-            } else if (redirect === 'event') {
-                navigate(`/api/event/schedule`);
-            } else {
-                alert('unable to redirect');
-            }
-        }, 1500); // wait 1.5s before navigating
-        
-      
+        if(redirectSpecies){
+            navigate(`/api/pets/adopt?species=${redirectSpecies}`);
+        } else {
+            alert('Unable to redirect to pet gallery')
+        }
     };
+
+     
 
     return(
         <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl object-fill'>
@@ -51,6 +44,7 @@ function Login(){
             <div className='flex flex-col justify-center items-center pb-5'>
                 <img src={title} alt="title" className="w-auto h-auto"></img>
             </div>
+        
             
             <div className='content-justify-center'>
 
@@ -80,17 +74,9 @@ function Login(){
             <div className="pt-4 flex flex-col justify-center items-center">
                 <p>SignUp?</p>
                 <button type="button" className="block text-left text-white bottom-right"onClick={handleNext}>
-                    <img src={submit} alt="nextbutton" ></img>
+                    <img src={next} alt="nextbutton" ></img>
                 </button>
             </div>
-
-            {showSuccessPopup && (
-            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-            <div className="bg-white p-6 rounded shadow-lg text-center">
-                <p className="text-green-600 font-semibold text-xl">🎉 Profile created successfully!</p>
-            </div>
-            </div>
-            )}
             
         </section>
     )
