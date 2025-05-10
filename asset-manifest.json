@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/FurEverHome-website/static/css/main.ff008978.css",
-    "main.js": "/FurEverHome-website/static/js/main.a1367fcb.js",
+    "main.js": "/FurEverHome-website/static/js/main.0e6900ea.js",
     "static/js/453.32de18cf.chunk.js": "/FurEverHome-website/static/js/453.32de18cf.chunk.js",
     "static/media/eventlogo.svg": "/FurEverHome-website/static/media/eventlogo.4363a555b94405a16035ce69a09c7bfc.svg",
     "static/media/dog.svg": "/FurEverHome-website/static/media/dog.d3e3ad76a948253c9bbf8f6384720c8d.svg",
@@ -51,11 +51,11 @@
     "index.html": "/FurEverHome-website/index.html",
     "static/media/nextbutton.svg": "/FurEverHome-website/static/media/nextbutton.ed5eb94a16782d9dfc8acf41e2e6240c.svg",
     "main.ff008978.css.map": "/FurEverHome-website/static/css/main.ff008978.css.map",
-    "main.a1367fcb.js.map": "/FurEverHome-website/static/js/main.a1367fcb.js.map",
+    "main.0e6900ea.js.map": "/FurEverHome-website/static/js/main.0e6900ea.js.map",
     "453.32de18cf.chunk.js.map": "/FurEverHome-website/static/js/453.32de18cf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ff008978.css",
-    "static/js/main.a1367fcb.js"
+    "static/js/main.0e6900ea.js"
   ]
 }
