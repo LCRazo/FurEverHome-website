@@ -61,8 +61,8 @@ function Navbar(){
           <a href="#contact" className="text-white no-underline hover:underline">Contact</a>
           <a href="#signUp" className="text-white no-underline hover:underline">Sign Up</a>
           <a href='#login' className="text-white no-underline hover:underline">Login</a>
-          <Link to='/api/profile/owner' className='hover:underline text-white text-2xl'>Owner Profile</Link>
-          <Link to='/api/profile/adopter' className='hover:underline text-white text-2xl'>Adopter Profile</Link>
+          <Link to='/api/profile/owner' className='text-white no-underline hover:underline text-large'>Owner Profile</Link>
+          <Link to='/api/profile/adopter' className='text-white no-underline hover:underline text-large'>Adopter Profile</Link>
         </div>
       </div>
 
