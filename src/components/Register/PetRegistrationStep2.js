@@ -58,6 +58,7 @@ function PetRegistrationStep2() {
       alert('Please complete all fields before submitting!');
       return;
     }
+ 
 
     const combinedData = { ...step1Data, ...formData };
     const formToSend = new FormData();
@@ -105,7 +106,7 @@ function PetRegistrationStep2() {
       {/* Title */}
       <div className="flex flex-col items-center mb-4">
         <img src={Logo} alt="logo" />
-        <p className="pt-4">Now fill out the information regarding your pet’s health</p>
+        <p className="w-full text-3xl">Now fill out the information regarding your pet’s health</p>
       </div>
 
       {/* Form */}
@@ -129,7 +130,7 @@ function PetRegistrationStep2() {
               : 'cursor-not-allowed'
           }`}
         >
-          <img src={Submit} alt="Submit" />
+          <img src={Submit} alt="Submit" className={!isFormValid ? 'opacity-50 cursor-not-allowed' : 'cursor-allowed'} />
         </button>
       </div>
 
