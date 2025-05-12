@@ -2,7 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import title from '../assets/adopterProfile.svg';
+import tobyImg from '../assets/Stock_Pet_Profile_Images/toby-dalmatian.svg';
+import moxieImg from '../assets/Stock_Pet_Profile_Images/mochi-cat.svg';
+
+
 import next from '../assets/nextbutton.svg';
+import marthaImg from '../assets/Stock_Pet_Owner/Martha.jpeg';
 
 function AdopterProfile(){
     const [isEditing, setIsEditing] = useState(false);
@@ -55,93 +60,185 @@ function AdopterProfile(){
 
     return(
         <section className='bg-[#FFF29C] min-h-screen py-12 px-4 text-center object-fill'>
-            <img src={title} alt="title" className="mx-auto w-1/2 mb-6" />
-            
-            <div className="grid grid-cols-3 gap-6">
+        <img src={title} alt="title" className="mx-auto w-1/2 mb-6" />
+        
+        <div className="grid grid-cols-3 gap-2">
 
-                {/* First Column */}
-                <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                    <button onClick={() => setIsEditing(!isEditing)} className="text-white text-sm underline mb-4 float-right">
-                    {isEditing ? 'Cancel' : 'Edit'}
+            {/* First Column */}
+            <div className="bg-c4b2 p-2 w-full max-w-lg mx-auto rounded-xl shadow-md">
+            <div className="flex justify-end space-x-3 mb-4">
+                {isEditing ? (
+                    <>
+                    <button
+                        onClick={handleCancel}
+                        className="text-white text-sm underline"
+                    >
+                        Cancel
                     </button>
-
-                    <label className="block text-white text-2xl font-bold mb-1">Owner Information</label>
-
-                    {/* Input Fields */}
-                    <label className="block text-white font-semibold mb-1">First Name</label>
-                    <input name="firstName" value={formData.firstName} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
-
-                    <label className="block text-white font-semibold mb-1">Last Name</label>
-                    <input name="lastName" value={formData.lastName} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
-
-                    <label className="block text-white font-semibold mb-1">Phone Number</label>
-                    <input name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
-
-                    <label className="block text-white font-semibold mb-1">Address</label>
-                    <input name="address" value={formData.address} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
-
-                    <label className="block text-white font-semibold mb-1">City</label>
-                    <input name="city" value={formData.city} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
-
-                    <label className="block text-white font-semibold mb-1">State</label>
-                    <input name="state" value={formData.state} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
-
-                    <label className="block text-white font-semibold mb-1">Job Status</label>
-                    <input name="jobStatus" value={formData.jobStatus} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
+                    <button
+                        onClick={handleSave}
+                        className="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-1 rounded"
+                    >
+                        Save
+                    </button>
+                    </>
+                ) : (
+                    <button
+                    onClick={handleEdit}
+                    className="text-white text-sm underline"
+                    >
+                    Edit
+                    </button>
+                )}
                 </div>
 
-                {/* Second Column */}
-                <div className="flex flex-col gap-6">
 
-                    <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                        <label className="block text-white text-2xl font-bold mb-2">My Potential Pets</label>
-                        <label className="block text-white font-semibold mb-2">No Favorited Pets</label>
-                        {/* <input name="events" className="block w-full p-2 text-black rounded" required /> */}
+                <label className="block text-white text-2xl font-bold mb-1">Owner Information</label>
+
+                {/* Input Fields */}
+                <label className="block text-white font-semibold mb-1">First Name</label>
+                <input name="firstName" value={formData.firstName} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
+
+                <label className="block text-white font-semibold mb-1">Last Name</label>
+                <input name="lastName" value={formData.lastName} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
+
+                <label className="block text-white font-semibold mb-1">Phone Number</label>
+                <input name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
+
+                <label className="block text-white font-semibold mb-1">Address</label>
+                <input name="address" value={formData.address} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
+
+                <label className="block text-white font-semibold mb-1">City</label>
+                <input name="city" value={formData.city} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
+
+                <label className="block text-white font-semibold mb-1">State</label>
+                <input name="state" value={formData.state} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
+
+                <label className="block text-white font-semibold mb-1">Job Status</label>
+                <input name="jobStatus" value={formData.jobStatus} onChange={handleChange} readOnly={!isEditing} className="block w-full mb-4 p-2 text-black rounded border" />
+            
+                <label className="block text-white font-semibold mb-1">Profile Photo</label>
+                <img
+                src={
+                    formData.webPhoto
+                    ? typeof formData.webPhoto === 'string'
+                        ? formData.webPhoto                     // If it's a URL
+                        : URL.createObjectURL(formData.webPhoto) // If it's a File
+                    : marthaImg // Fallback default
+                }
+                alt="User Profile"
+                className="w-32 h-32 rounded-full object-cover mx-auto mb-2"
+                />
+
+                {/* If editing, show upload input and new image preview */}
+                {isEditing && (
+                <>
+                    <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                        const file = e.target.files[0];
+                        if (file) {
+                        setTempFormData((prev) => ({ ...prev, webPhoto: file }));
+                        }
+                    }}
+                    className="block w-full p-2 mb-2 text-black bg-white rounded"
+                    />
+
+                    {tempFormData.webPhoto && (
+                    <div>
+                        <p className="text-white text-sm mb-1">New Image Preview:</p>
+                        <img
+                        src={URL.createObjectURL(tempFormData.webPhoto)}
+                        alt="Preview"
+                        className="w-32 h-32 rounded-full object-cover mx-auto"
+                        />
                     </div>
+                    )}
+                </>
+                )}
 
-                    <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                        <label className="block text-white text-2xl font-bold mb-1">Pending Pet Applications</label>
-                        <label className="block text-white font-semibold mb-1">No Pending Pet Applications</label>
-                        {/* <input name="events" className="block w-full p-2 text-black rounded" required /> */}
+            </div>
+
+            {/* Second Column */}
+            <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
+                <label className="block text-white text-2xl font-bold mb-4">My Pets</label>
+
+                {/* Pet 1 */}
+                <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                    <img src={tobyImg} alt="Toby" className="w-48 h-22 rounded-xl object-cover mr-4" />
+                    <div className="text-left">
+                    <p className="text-black font-bold text-xl flex items-center gap-2">
+                        Toby <span className="text-blue-900 text-2xl font-bold">♂</span>
+                    </p>
+                    <p className="text-gray-700">Dalmatian</p>
+                    {/* extra pet pictures */}
+                    <div className="flex mt-2 space-x-2">
+                        <img src={tobyImg} alt="spot1" className="w-8 h-8 rounded-full" />
+                        <img src={tobyImg} alt="spot2" className="w-8 h-8 rounded-full" />
                     </div>
-
-
-
+                    </div>
                 </div>
 
-                {/* Third Column (2 Rows) */}
-                <div className="flex flex-col gap-6">
-                    {/* Row 1 */}
-                    <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                        <label className="block text-white text-2xl font-bold mb-1">My Notifications</label>
-                        <label className="block text-white font-semibold mb-1">No New Notifications</label>
-                        {/* <input name="events" className="block w-full p-2 text-black rounded" required /> */}
+                {/* Pet 2 */}
+                <div className="bg-white p-4 rounded-lg shadow-md flex">
+                    <img src={moxieImg} alt="Moxie" className="w-48 h-26 rounded-xl object-cover mr-4" />
+                    <div className="text-left">
+                    <p className="text-black font-bold text-xl flex items-center gap-2">
+                        Moxie <span className="text-pink-900 text-2xl font-bold">♀</span>
+                    </p>
+                    <p className="text-gray-700">Mixed</p>
+                    <div className="flex mt-2 space-x-2">
+                        <img src={moxieImg} alt="meme1" className="w-8 h-8 rounded-full" />
+                        <img src={moxieImg} alt="meme2" className="w-8 h-8 rounded-full" />
                     </div>
-
-                    <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                        <label className="block text-white text-2xl font-bold mb-1">My Meet Ups</label>
-                        <label className="block text-white font-semibold mb-1">No Upcoming Meet Ups</label>
-                        {/* <input name="events" className="block w-full p-2 text-black rounded" required /> */}
-                    </div>
-
-                    {/* Row 2 */}
-                    <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                        <label className="block text-white text-2xl font-bold mb-1">My Events</label>
-                        <label className="block text-white font-semibold mb-1">No Upcoming Events</label>
-                        {/* <input name="notifications" className="block w-full p-2 text-black rounded" required /> */}
                     </div>
                 </div>
             </div>
 
 
-            
-            {/* <div className="pt-4 flex justify-center">
-                <button type="button" className="block text-left text-white bottom-right"onClick={handleNext}>
-                    <img src={next} alt="nextbutton" ></img>
-                </button>
-            </div> */}
-            
-        </section>
+            {/* Third Column (2 Rows) */}
+            <div className="flex flex-col gap-10 justify-start px-2">
+                {/* Notifications */}
+                <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                    <label className="block text-white text-2xl font-bold mb-2">My Notifications</label>
+                    {/* <p className="text-white text-md">No new notifications</p> */}
+                    <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                        <div className="text-left">
+                        <p className="text-black font-semibold text-xl flex items-center gap-2">
+                            <img src={marthaImg} alt="adopter" className="w-8 h-8 rounded-full" />
+                            Martha liked Toby
+                            <img src={tobyImg} alt="meme1" className="items-right w-8 h-8 rounded-full" />
+                            {/* Toby <span className="text-blue-900 text-2xl font-bold">♂</span> */}
+                        </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Meet Ups */}
+                <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                    <label className="block text-white text-2xl font-bold mb-2">My Meet Ups</label>
+                    {/* <p className="text-white text-md">No upcoming meet ups</p> */}
+                </div>
+
+                {/* Events */}
+                <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                    <label className="block text-white text-2xl font-bold mb-2">My Events</label>
+                    {/* <p className="text-white text-md">No upcoming events</p> */}
+                </div>
+            </div>
+
+        </div>
+
+
+        
+        {/* <div className="pt-4 flex justify-center">
+            <button type="button" className="block text-left text-white bottom-right"onClick={handleNext}>
+                <img src={next} alt="nextbutton" ></img>
+            </button>
+        </div> */}
+        
+    </section>
     )
 };
 

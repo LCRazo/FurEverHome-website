@@ -204,7 +204,7 @@ function OwnerProfile(){
                 <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
                     <label className="block text-white text-2xl font-bold mb-2">My Pets</label>
                     {/* default when there are no listed pets */}
-                    <label className="block text-white font-semibold mb-2">No Pets Need Rehoming</label>
+                    {/* <label className="block text-white font-semibold mb-2">No Pets Need Rehoming</label> */}
                     {/* <input name="name" className="block w-full mb-6 p-2 text-black rounded" required /> */}
 
                     {/* <div className="grid grid-cols-2 gap-4">
@@ -213,27 +213,32 @@ function OwnerProfile(){
                 </div>
 
                 {/* Third Column (2 Rows) */}
-                <div className="flex flex-col gap-6">
-                    {/* Row 1 */}
-                    <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                        <label className="block text-white text-2xl font-bold mb-1">My Notifications</label>
-                        <label className="block text-white font-semibold mb-1">No New Notifications</label>
-                        {/* <input name="events" className="block w-full p-2 text-black rounded" required /> */}
+                <div className="flex flex-col gap-12 items-center px-4 py-12">
+                    {/* Row 1 - Notifications */}
+                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
+                        <label className="block text-white text-3xl font-bold mb-4">
+                        My Notifications
+                        </label>
+                        {/* <p className="text-white font-medium">No New Notifications</p> */}
                     </div>
 
-                    <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                        <label className="block text-white text-2xl font-bold mb-1">My Meet Ups</label>
-                        <label className="block text-white font-semibold mb-1">No Upcoming Meet Ups</label>
-                        {/* <input name="events" className="block w-full p-2 text-black rounded" required /> */}
+                    {/* Row 2 - Meet Ups */}
+                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
+                        <label className="block text-white text-3xl font-bold mb-4">
+                        My Meet Ups
+                        </label>
+                        {/* <p className="text-white font-medium">No Upcoming Meet Ups</p> */}
                     </div>
 
-                    {/* Row 2 */}
-                    <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                        <label className="block text-white text-2xl font-bold mb-1">Upcoming Events</label>
-                        <label className="block text-white font-semibold mb-1">No Upcoming Events</label>
-                        {/* <input name="notifications" className="block w-full p-2 text-black rounded" required /> */}
+                    {/* Row 3 - Events */}
+                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
+                        <label className="block text-white text-3xl font-bold mb-4">
+                        Upcoming Events
+                        </label>
+                        {/* <p className="text-white font-medium">No Upcoming Events</p> */}
                     </div>
                 </div>
+
             </div>
 
 
