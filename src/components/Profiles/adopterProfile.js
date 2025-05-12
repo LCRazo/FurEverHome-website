@@ -166,7 +166,7 @@ function AdopterProfile(){
 
                 {/* Pet 1 */}
                 <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
-                    <img src={tobyImg} alt="Toby" className="w-48 h-22 rounded-xl object-cover mr-4" />
+                    <img src={tobyImg} alt="Toby" className="w-24 h-24 rounded-xl object-cover mr-4" />
                     <div className="text-left">
                     <p className="text-black font-bold text-xl flex items-center gap-2">
                         Toby <span className="text-blue-900 text-2xl font-bold">♂</span>
@@ -182,7 +182,7 @@ function AdopterProfile(){
 
                 {/* Pet 2 */}
                 <div className="bg-white p-4 rounded-lg shadow-md flex">
-                    <img src={moxieImg} alt="Moxie" className="w-48 h-26 rounded-xl object-cover mr-4" />
+                    <img src={moxieImg} alt="Moxie" className="w-24 h-24 rounded-xl object-cover mr-4" />
                     <div className="text-left">
                     <p className="text-black font-bold text-xl flex items-center gap-2">
                         Moxie <span className="text-pink-900 text-2xl font-bold">♀</span>
@@ -207,8 +207,8 @@ function AdopterProfile(){
                         <div className="text-left">
                         <p className="text-black font-semibold text-xl flex items-center gap-2">
                             <img src={marthaImg} alt="adopter" className="w-8 h-8 rounded-full" />
-                            Martha liked Toby
-                            <img src={tobyImg} alt="meme1" className="items-right w-8 h-8 rounded-full" />
+                            Martha Doe liked Toby
+                            {/* <img src={tobyImg} alt="meme1" className="items-right w-8 h-8 rounded-full" /> */}
                             {/* Toby <span className="text-blue-900 text-2xl font-bold">♂</span> */}
                         </p>
                         </div>

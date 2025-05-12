@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import title from '../assets/ownerProfile.svg';
 // import next from '../assets/nextbutton.svg';
 import jimImg from '../assets/Stock_Pet_Owner/Jim.jpeg';
+import tobyImg from '../assets/Stock_Pet_Profile_Images/toby-dalmatian.jpg'
+import moxieImg from '../assets/Stock_Pet_Profile_Images/mochi-cat.svg';
+import marthaImg from '../assets/Stock_Pet_Owner/Martha.jpeg';
 
 // Example login handler
 // const handleLogin = async () => {
@@ -102,10 +105,10 @@ function OwnerProfile(){
         <section className='bg-[#FFF29C] min-h-screen py-12 px-4 text-center object-fill'>
             <img src={title} alt="title" className="mx-auto w-1/2 mb-6" />
             
-            <div className="grid grid-cols-3 gap-6">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start space-x-6">
 
                 {/* First Column */}
-                <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
+                <div className="bg-c4b2 p-6 rounded-xl shadow-md h-full">
                 <div className="flex justify-end space-x-3 mb-4">
                     {isEditing ? (
                         <>
@@ -201,43 +204,74 @@ function OwnerProfile(){
                 </div>
 
                 {/* Second Column */}
-                <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                    <label className="block text-white text-2xl font-bold mb-2">My Pets</label>
-                    {/* default when there are no listed pets */}
-                    {/* <label className="block text-white font-semibold mb-2">No Pets Need Rehoming</label> */}
-                    {/* <input name="name" className="block w-full mb-6 p-2 text-black rounded" required /> */}
+                <div className="bg-c4b2 p-6 rounded-xl shadow-md h-full">
+                    <label className="block text-white text-2xl font-bold mb-4">My Pets</label>
 
-                    {/* <div className="grid grid-cols-2 gap-4">
-                        
-                    </div> */}
+                    {/* Pet 1 */}
+                    <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                        <img src={tobyImg} alt="Toby" className="w-24 h-24 rounded-xl object-cover mr-4" />
+                        <div className="text-left">
+                        <p className="text-black font-bold text-xl flex items-center gap-2">
+                            Toby <span className="text-blue-900 text-2xl font-bold">♂</span>
+                        </p>
+                        <p className="text-gray-700">Dalmatian</p>
+                        {/* extra pet pictures */}
+                        <div className="flex mt-2 space-x-2">
+                            <img src={tobyImg} alt="spot1" className="w-8 h-8 rounded-full" />
+                            <img src={tobyImg} alt="spot2" className="w-8 h-8 rounded-full" />
+                        </div>
+                        </div>
+                    </div>
+
+                    {/* Pet 2 */}
+                    <div className="bg-white p-4 rounded-lg shadow-md flex">
+                        <img src={moxieImg} alt="Moxie" className="w-24 h-24 rounded-xl object-cover mr-4" />
+                        <div className="text-left">
+                        <p className="text-black font-bold text-xl flex items-center gap-2">
+                            Moxie <span className="text-pink-900 text-2xl font-bold">♀</span>
+                        </p>
+                        <p className="text-gray-700">Mixed</p>
+                        <div className="flex mt-2 space-x-2">
+                            <img src={moxieImg} alt="meme1" className="w-8 h-8 rounded-full" />
+                            <img src={moxieImg} alt="meme2" className="w-8 h-8 rounded-full" />
+                        </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Third Column (2 Rows) */}
-                <div className="flex flex-col gap-12 items-center px-4 py-12">
-                    {/* Row 1 - Notifications */}
-                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
-                        <label className="block text-white text-3xl font-bold mb-4">
-                        My Notifications
-                        </label>
-                        {/* <p className="text-white font-medium">No New Notifications</p> */}
+                <div className="bg-c4b2 p-6 rounded-xl shadow-md h-full">
+                    {/* Notifications */}
+                    <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                        <label className="block text-white text-2xl font-bold mb-2">My Notifications</label>
+                        {/* <p className="text-white text-md">No new notifications</p> */}
+                        <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                            <div className="text-left">
+                            <p className="text-black font-semibold text-xl flex items-center gap-2">
+                                <img src={marthaImg} alt="adopter" className="w-8 h-8 rounded-full" />
+                                Martha Doe liked Toby
+                                {/* <img src={tobyImg} alt="meme1" className="items-right w-8 h-8 rounded-full" /> */}
+                                {/* Toby <span className="text-blue-900 text-2xl font-bold">♂</span> */}
+                            </p>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Row 2 - Meet Ups */}
-                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
-                        <label className="block text-white text-3xl font-bold mb-4">
-                        My Meet Ups
-                        </label>
-                        {/* <p className="text-white font-medium">No Upcoming Meet Ups</p> */}
+                    {/* Meet Ups */}
+                    <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                        <label className="block text-white text-2xl font-bold mb-2">My Meet Ups</label>
+                        {/* <p className="text-white text-md">No upcoming meet ups</p> */}
                     </div>
 
-                    {/* Row 3 - Events */}
-                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
-                        <label className="block text-white text-3xl font-bold mb-4">
-                        Upcoming Events
-                        </label>
-                        {/* <p className="text-white font-medium">No Upcoming Events</p> */}
+                    {/* Events */}
+                    <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                        <label className="block text-white text-2xl font-bold mb-2">My Events</label>
+                        {/* <p className="text-white text-md">No upcoming events</p> */}
                     </div>
                 </div>
+                
+
+        
 
             </div>
 
