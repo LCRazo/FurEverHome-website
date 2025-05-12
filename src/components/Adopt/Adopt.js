@@ -17,7 +17,7 @@ function Adopt() {
           <h3 className="mt-4 text-white font-saira text-2xl text-center">
             Looking for a new best friend? Browse our adorable adoptables and discover pets waiting to fill your home with love—whether you're ready for a lifelong bond or can offer temporary care.
           </h3>
-          <Link to='/api/pets/adopt/login' className="mt-4 bg-e95991 text-white font-saira text-2xl px-5 py-2 rounded-md transition no-underline">
+          <Link to='/api/pets/adopt/login?choice=adopt' className="mt-4 bg-e95991 text-white font-saira text-2xl px-5 py-2 rounded-md transition no-underline">
             Adopt
           </Link>
         </div>
@@ -27,7 +27,7 @@ function Adopt() {
           <h3 className="mt-4 text-white font-saira text-2xl text-center">
             Find Your Pet a Loving Forever Home: When life changes, we’re here to help. Connect with trusted adopters ready to welcome your pet into their hearts and homes.
           </h3>
-          <Link to= "/api/pets/register/login" className="mt-4 bg-white text-e95991 hover:text-e95991 font-saira text-2xl px-5 py-2 rounded-md transition no-underline">
+          <Link to= "/api/pets/adopt/login?choice=rehome" className="mt-4 bg-white text-e95991 hover:text-e95991 font-saira text-2xl px-5 py-2 rounded-md transition no-underline">
             Rehome
           </Link >
         </div>

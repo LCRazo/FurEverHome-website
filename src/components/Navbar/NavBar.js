@@ -54,15 +54,15 @@ function Navbar(){
 
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-8 text-white text-xl font-saira">
-          <a href="#home" className="text-white no-underline hover:underline cursor-pointer">Home</a>
+          <a href="#home" className="text-white no-underline hover:underline cursor-pointer">Login</a>
           <a href="#about" className="text-white no-underline hover:underline">About</a>
-          {/* <a href="#events" className="text-white no-underline hover:underline">Services</a> */}
           <a href="#pets" className="text-white no-underline hover:underline">Pet Gallery</a>
-          <a href="#contact" className="text-white no-underline hover:underline">Contact</a>
           <a href="#signUp" className="text-white no-underline hover:underline">Sign Up</a>
-          <a href='#login' className="text-white no-underline hover:underline">Login</a>
-          <Link to='/api/profile/owner' className='text-white no-underline hover:underline text-large'>Owner Profile</Link>
-          <Link to='/api/profile/adopter' className='text-white no-underline hover:underline text-large'>Adopter Profile</Link>
+          <a href="#events" className="text-white no-underline hover:underline">Events</a>
+          <a href="#contact" className="text-white no-underline hover:underline">Contact</a>
+          <Link to='/api/profile/owner' className='hover:underline text-white text-2xl'>Owner Profile</Link>
+          <Link to='/api/profile/adopter' className='hover:underline text-white text-2xl'>Adopter Profile</Link>
+
         </div>
       </div>
 

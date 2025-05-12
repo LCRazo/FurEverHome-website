@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
-import title from '../assets/OwnerRegistration.svg';
 import next from '../assets/nextbutton.svg';
+import title from '../assets/Login.svg';
+import { useNavigate, useLocation} from 'react-router-dom'
 
-function OwnerRegistrationSignup(){
+function Login(){
     const navigate = useNavigate();
+    const location = useLocation();
+
+    //extract species from query parameter
+    const queryParams = new URLSearchParams(location.search);
+    const redirectSpecies = queryParams.get('species');
 
     const [formData, setFormData] = useState({
         username: '',
@@ -18,42 +23,28 @@ function OwnerRegistrationSignup(){
         });
     };
 
-    const handleNext = async () => {
-        if (formData.password.length < 8) {
+    const handleNext = () => {
+        if(formData.password.length < 8){
             alert('Password must be at least 8 characters long');
             return;
         }
 
-        try {
-            const response = await fetch('http://localhost:3001/api/owner/register/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                alert(`Error: ${errorData.error}`);
-                return;
-            }
-
-            alert('Registration successful!');
-            navigate('/api/owner/register/step1');
-        } catch (error) {
-            console.error('Error during registration:', error);
-            alert('An error occurred. Please try again later.');
+        if(redirectSpecies){
+            navigate(`/api/pets/adopt?species=${redirectSpecies}`);
+        } else {
+            alert('Unable to redirect to pet gallery')
         }
     };
 
+     
+
     return(
         <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl object-fill'>
-            <img src={title} alt="title" className="w-full"></img>
-
-            <div className="w-full text-3xl">
-                <p>Create an username and password</p>
+            
+            <div className='flex flex-col justify-center items-center pb-5'>
+                <img src={title} alt="title" className="w-auto h-auto"></img>
             </div>
+        
             
             <div className='content-justify-center'>
 
@@ -81,7 +72,7 @@ function OwnerRegistrationSignup(){
             </div>
             
             <div className="pt-4 flex flex-col justify-center items-center">
-                <p>Login?</p>
+                <p>SignUp?</p>
                 <button type="button" className="block text-left text-white bottom-right"onClick={handleNext}>
                     <img src={next} alt="nextbutton" ></img>
                 </button>
@@ -91,4 +82,4 @@ function OwnerRegistrationSignup(){
     )
 };
 
-export default OwnerRegistrationSignup;
+export default Login;

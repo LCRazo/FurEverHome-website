@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Next from '../assets/nextbutton.svg'
@@ -50,15 +50,38 @@ function Input({ label, name, value, onChange }) {
 function OwnerRegistrationStep1(){
     const navigate = useNavigate();
 
-    const handleNext = () => {
-      if (!isFormValid) {
-        alert('Please fill out all fields!');
+  const handleNext = async () => {
+    if (!isFormValid) {
+      alert('Please fill out all fields!');
+      return;
+    }
+
+    const form = new FormData();
+    for (const key in formData) {
+      form.append(key, formData[key]);
+    }
+
+    try {
+      const response = await fetch('http://localhost:3001/api/owner/register/step1', {
+        method: 'POST',
+        body: form,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(`Error: ${errorData.error}`);
         return;
       }
-      setTimeout(() => {
-        navigate('/api/owner/register/step2');
-      }, 1500);
-    };
+
+      const data = await response.json();
+      alert('Background info submitted!');
+      navigate('/api/owner/register/step2');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred. Please try again later.');
+    }
+  };
+
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -73,7 +96,6 @@ function OwnerRegistrationStep1(){
         streetSuffix: '',
         city: '',
         state: '',
-        location: '',
         adopterPhoto: null,
     });
 
@@ -106,11 +128,45 @@ function OwnerRegistrationStep1(){
         setFormData({ ...formData, phoneNumber: value });
     };
 
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await fetch(`http://localhost:3001/api/owner/profile/${formData.username}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setFormData({
+                        ...formData,
+                        firstName: data.first_name || '',
+                        lastName: data.last_name || '',
+                        livingSituation: data.living_situation || '',
+                        householdSize: data.num_of_household || '',
+                        jobType: data.job_type || '',
+                        jobTitle: data.job_title || '',
+                        petCount: data.num_of_pets || '',
+                        phoneNumber: data.phone_num || '',
+                        address: data.address_street || '',
+                        streetSuffix: data.address_suffix || '',
+                        city: data.city || '',
+                        state: data.state || '',
+                        adopterPhoto: data.web_photo || null,
+                    });
+                } else {
+                    console.error('Failed to fetch profile');
+                }
+            } catch (error) {
+                console.error('Error fetching profile:', error);
+            }
+        };
+
+        if (formData.username) {
+            fetchProfile();
+        }
+    }, [formData.username]);
+
     const livingOptions = ['House', 'Apartment', 'Recreational Vehicle (RV)','Condo'];
+    const jobType = ['Full-time', 'Part-time', 'Self-employed', 'Unemployed'];
     const householdSize = ['1', '2','3','4','5','6+'];
-    const jobType = ['Full-Time', 'Part-Time', 'Unemployed','Student'];
     const petCount = ['0','1','2','3+'];
-    const locations = ['Urban', 'Suburban', 'Rural'];
 
     return(
             <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl '>
@@ -126,9 +182,9 @@ function OwnerRegistrationStep1(){
                     <Input label="Last Name *" name="lastName" value={formData.lastName} onChange={handleChange} />
                     <Dropdown label="Living Situation *" name="livingSituation" options={livingOptions} value={formData.livingSituation} onChange={handleChange}/>
                     <Dropdown label="Household Size *" name="householdSize" options={householdSize} value={formData.householdSize} onChange={handleChange}/>
-                    <Dropdown label="Job Type *" name="jobType" options={jobType} value={formData.jobType} onChange={handleChange}/>
                     {/* <Dropdown label="Job Title *" name="jobTitle" options={jobTitle} value={formData.jobTitle} onChange={handleChange}/> */}
                     <Input label="Job Title *" name="jobTitle" value={formData.jobTitle} onChange={handleChange} />
+                    <Dropdown label="Job Type *" name="jobType" options={jobType} value={formData.jobType} onChange={handleChange}/>
                     <Dropdown label="Number of Pets *" name="petCount" options={petCount} value={formData.petCount} onChange={handleChange}/>
                     <Input 
                         label="Phone Number *" 
@@ -140,7 +196,6 @@ function OwnerRegistrationStep1(){
                     <Dropdown label="Street Suffix *" name="streetSuffix" options={streetSuffix} value={formData.streetSuffix} onChange={handleChange}/>
                     <Input label="City *" name='city' value={formData.city} onChange={handleChange}/>
                     <Input label="State *" name='state' value={formData.state} onChange={handleChange} />
-                    <Dropdown label="Location *" name="location" options={locations} value={formData.location} onChange={handleChange} />
                 </div>
 
                 <div>
