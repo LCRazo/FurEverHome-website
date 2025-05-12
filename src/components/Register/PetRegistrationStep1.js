@@ -26,6 +26,22 @@ function Dropdown({ label, name, options = [], value, onChange }) {
   );
 }
 
+function Input({ label, name, value, onChange }) {
+    return (
+      <div>
+        <label className="block text-left text-white font-semibold">{label}</label>
+        <input
+          type="text"
+          name={name}
+          value={value}
+          onChange={onChange}
+          className="block w-full p-2 text-black rounded"
+          required
+        />
+      </div>
+    );
+  }
+
 function PetRegistrationStep1() {
   const [breedOptionsBySpecies, setBreedOptionsBySpecies] = useState({});
   const navigate = useNavigate();
@@ -55,6 +71,7 @@ function PetRegistrationStep1() {
 
   const [formData, setFormData] = useState({
     name: '',
+    petDesc: '',
     species: '',
     breed: '',
     workingClass: '',
@@ -109,19 +126,19 @@ useEffect(() => {
           {/*Title */}
         <div className='flex flex-col items-center mb-4'>
             <img src={Logo} alt='logo'></img>
-            <p className='pt-4'>Let’s get to know your pet! Fill out the following background information.</p>
+            <p className='w-full text-3xl'>Let’s get to know your pet! Fill out the following background information.</p>
         </div>
 
         {/*Form */}
         <div className='flex flex-col '>
-          <label className="block text-left text-white">Name*</label>
-          <input 
+          {/* <label className="block text-left text-white">Name*</label> */}
+          <Input label="Name * "
                 name="name" 
                 value={formData.name} 
                 onChange={handleChange} 
                 className="block w-full mb-2 p-2 text-black" 
                 required/>
-          
+          <Input label="Pet Description *" name="petDesc" value={formData.petDesc} onChange={handleChange} required/>
           <Dropdown label="Species *" name="species" options={species} value={formData.species} onChange={handleChange}/>
           {formData.species && (
             <Dropdown label="Breed *" name="breed" options={breedOptions} value={formData.breed} onChange={handleChange}/>

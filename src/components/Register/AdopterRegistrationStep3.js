@@ -124,7 +124,7 @@ function AdopterRegistrationStep3() {
           onClick={handleNext}
           disabled={!isFormValid}
         >
-          <img src={submit} alt="Next button" className={!isFormValid ? 'opacity-50' : ''} />
+          <img src={submit} alt="Submit button" className={!isFormValid ? 'opacity-50' : ''} />
         </button>
       </div>
 
