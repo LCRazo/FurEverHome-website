@@ -210,7 +210,7 @@ app.use(express.json());
 
   // ✅ Serve React frontend in production only
   if (process.env.NODE_ENV === 'production') {
-    const buildPath = path.join(__dirname, '../build');
+    const buildPath = path.join(__dirname, 'build');
     if (fs.existsSync(buildPath)) {
       app.use(express.static(buildPath));
       app.get('*', (req, res) => {
