@@ -235,9 +235,8 @@ app.use(express.json());
     }
 
     const updateQuery = `
-      UPDATE user_background
-      SET rehome_reason = ?
-      WHERE profile_id = ?
+      INSERT INTO owner (rehome_reason, profile_id)
+      VALUES (?, ?)
     `;
 
     const profileIdInt = parseInt(profileId, 10);

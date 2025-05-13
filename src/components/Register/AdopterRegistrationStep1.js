@@ -18,12 +18,33 @@ function AdopterRegistrationStep1(){
         });
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
         if(formData.password.length < 8){
             alert('Password must be at least 8 characters long');
             return;
         }
-        navigate('/api/adopter/register/step2');
+        
+        try{
+            const response = await fetch('http://localhost:3001/api/adopter/register/step1', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            
+            if(!response.ok) {
+                const errorData = await response.json();
+                alert('Error: ${errorData.error}');
+                return;
+            }
+            
+            alert('Registration Successful!');
+            navigate('/api/adopter/register/step2');
+        } catch (error) {
+            console.error('Error during registration:', error);
+            alert('An error occurred. Please try again later.');
+        }
     };
 
     return(

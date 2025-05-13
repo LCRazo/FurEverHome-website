@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import title from '../assets/OwnerRegistration.svg';
@@ -59,7 +59,6 @@ function OwnerRegistrationStep2(){
     };
 
     const [formData, setFormData] = useState({
-        organization: '',
         rehomeReason: '',
     });
 
@@ -72,8 +71,31 @@ function OwnerRegistrationStep2(){
             [name]: files ? files[0] : value,
         });
     };
+    
+    useEffect(() => {
+      const fetchProfile = async() => {
+        try{
+          const response = await fetch (`http://localhost:3001/api/owner/register/step2/${formData.profileId}`);
+          if(response.ok) {
+            const data = await response.json();
+            setFormData({
+              ...formData,
+              rehomeReason: data.rehome_reason,
+            });
+          } else {
+              console.error('Failed to fetch profile');
+          }
+        } catch (error){
+            console.error('Error fetching profile:', error);
+        }
+      };
 
-    const rehomeReason = ['Financial Hardship', 'Hosuing Issues', 'Behavioral Challenges','Allergies', 'Time Constraints', 'Health Issues'
+      if (formData.username) {
+        fetchProfile();
+      }
+    }, [formData.username]);
+
+    const rehomeReason = ['I am an Animal Shelter', 'Financial Hardship', 'Hosuing Issues', 'Behavioral Challenges','Allergies', 'Time Constraints', 'Health Issues'
       ,'Moving','Family Changes', 'Too Many Pets', 'Owner Incapacitated'
     ];
     const organization = ['Yes', 'No'];

@@ -50,40 +50,8 @@ function Input({ label, name, value, onChange }) {
 function OwnerRegistrationStep1(){
     const navigate = useNavigate();
 
-  const handleNext = async () => {
-    if (!isFormValid) {
-      alert('Please fill out all fields!');
-      return;
-    }
-
-    const form = new FormData();
-    for (const key in formData) {
-      form.append(key, formData[key]);
-    }
-
-    try {
-      const response = await fetch('http://localhost:3001/api/owner/register/step1', {
-        method: 'POST',
-        body: form,
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        alert(`Error: ${errorData.error}`);
-        return;
-      }
-
-      const data = await response.json();
-      alert('Background info submitted!');
-      navigate('/api/owner/register/step2');
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('An error occurred. Please try again later.');
-    }
-  };
-
-
     const [formData, setFormData] = useState({
+        profileId: '', // Add profileId to track the created account
         firstName: '',
         lastName: '',
         livingSituation: '',
@@ -99,9 +67,52 @@ function OwnerRegistrationStep1(){
         adopterPhoto: null,
     });
 
+    useEffect(() => {
+        // Extract profileId from query parameters
+        const queryParams = new URLSearchParams(window.location.search);
+        const profileId = queryParams.get('profileId');
+        if (profileId) {
+            setFormData((prev) => ({ ...prev, profileId }));
+        } else {
+            console.error('Profile ID is missing. Redirecting to signup page.');
+            navigate('/api/owner/register/signup'); // Redirect to signup if profileId is missing
+        }
+    }, []);
+
+    const handleNext = async () => {
+        if (!isFormValid) {
+            alert('Please fill out all fields!');
+            return;
+        }
+
+        const form = new FormData();
+        for (const key in formData) {
+            form.append(key, formData[key]);
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3001/api/owner/register/step1/${formData.profileId}`, {
+                method: 'PUT', // Use PUT for updating an existing profile
+                body: form,
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                alert(`Error: ${errorData.error}`);
+                return;
+            }
+
+            alert('Background info updated!');
+            navigate('/api/owner/register/step2');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('An error occurred. Please try again later.');
+        }
+    };
+
     const [previewImage, setPreviewImage] = useState(null);
 
-    const isFormValid = Object.values(formData).every(value => value !== '' && value !== null);
+    
 
     const handleChange = (e) => {
         const {name, value, files} = e.target;
@@ -131,7 +142,7 @@ function OwnerRegistrationStep1(){
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/api/owner/profile/${formData.username}`);
+                const response = await fetch(`http://localhost:3001/api/owner/register/step1/${formData.profileId}`);
                 if (response.ok) {
                     const data = await response.json();
                     setFormData({
@@ -158,15 +169,17 @@ function OwnerRegistrationStep1(){
             }
         };
 
-        if (formData.username) {
+        if (formData.profileId) {
             fetchProfile();
         }
-    }, [formData.username]);
+    }, [formData.profileId]);
 
     const livingOptions = ['House', 'Apartment', 'Recreational Vehicle (RV)','Condo'];
     const jobType = ['Full-time', 'Part-time', 'Self-employed', 'Unemployed'];
     const householdSize = ['1', '2','3','4','5','6+'];
     const petCount = ['0','1','2','3+'];
+
+    const isFormValid = Object.values(formData).every(value => value !== '' && value !== null);
 
     return(
             <section className='bg-C4B2 min-h-screen py-12 px-4 text-center text-white font-saira text-xl '>
