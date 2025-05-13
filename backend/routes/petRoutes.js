@@ -2,7 +2,7 @@ const express = require('express');
 //helps with routes if structures seperatly (eg. pets.js, owner.js)
 const router = express.Router();
 const Pet = require('../models/Pet');
-const db = require('../db'); //db instance
+const db = require('../../db'); //db instance
 
 
 
