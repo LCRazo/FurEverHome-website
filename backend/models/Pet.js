@@ -1,10 +1,10 @@
-//TO-Do: Add the datatype and attributes of Pet
-const { DataTypes } = require('sequelize');
-const sequelize = require('../../db');
+// //TO-Do: Add the datatype and attributes of Pet
+// const { DataTypes } = require('sequelize');
+// const sequelize = require('../../db');
 
-const Pet = sequelize.define('Pet', {
+// const Pet = sequelize.define('Pet', {
 
-});
+// });
 
 
-module.exports = Pet;
+// module.exports = Pet;
