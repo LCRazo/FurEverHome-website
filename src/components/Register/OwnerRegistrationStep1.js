@@ -91,7 +91,7 @@ function OwnerRegistrationStep1(){
         }
 
         try {
-            const response = await fetch(`http://localhost:3001/api/owner/register/step1/${formData.profileId}`, {
+            const response = await fetch(`/api/owner/register/step1/${formData.profileId}`, {
                 method: 'PUT', // Use PUT for updating an existing profile
                 body: form,
             });
@@ -142,7 +142,7 @@ function OwnerRegistrationStep1(){
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/api/owner/register/step1/${formData.profileId}`);
+                const response = await fetch(`/api/owner/register/step1/${formData.profileId}`);
                 if (response.ok) {
                     const data = await response.json();
                     setFormData({
