@@ -1,4 +1,4 @@
-import React, {useState,useEffect}from 'react';
+import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FurEverLogo from '../assets/FurEverlogo.svg';
 import './NavBar.css';
@@ -6,21 +6,24 @@ import 'jquery/dist/jquery.slim.min.js';
 import '@popperjs/core/dist/umd/popper.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
-function Navbar(){
-  //State to track if menu is open
+function Navbar() {
+  // State to track if menu is open
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  //Function to toggle menu state
+  // Function to toggle menu state
   const handleToggle = () => {
-      setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
-  
-  //State to track if navbar is scrolling 
-  const [isScrolled, setIsScrolled] = useState(false)
-  
 
-  //Function to check scroll position 
+  // State to track if navbar is scrolling
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // State to track login status
+  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get('profile_id'));
+
+  // Function to check scroll position
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -36,10 +39,21 @@ function Navbar(){
     };
   }, []);
 
+  // Function to check login status
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      setIsLoggedIn(!!Cookies.get('profile_id'));
+    };
+
+    checkLoginStatus();
+    const interval = setInterval(checkLoginStatus, 1000); // Check every second
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, []);
+
   return (
     <nav className={`bg-c4b2 shadow-md w-full fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'scrolled' : ''}`}>
-      <div className=" mx-auto px-6 py-4 flex items-center justify-between">
-      
+      <div className="mx-auto px-6 py-4 flex items-center justify-between">
         <img src={FurEverLogo} alt="FurEver Logo" className="top-0 left-0 h-12" />
 
         <button className="md:hidden focus:outline-none" onClick={handleToggle} aria-label="Toggle Menu">
@@ -54,7 +68,9 @@ function Navbar(){
 
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-8 text-white text-xl font-saira">
-          <a href="#home" className="text-white no-underline hover:underline cursor-pointer">Login</a>
+          <a href="#home" className="text-white no-underline hover:underline cursor-pointer">
+            {isLoggedIn ? 'Logout' : 'Login'}
+          </a>
           <a href="#about" className="text-white no-underline hover:underline">About</a>
           <a href="#pets" className="text-white no-underline hover:underline">Pet Gallery</a>
           <a href="#signUp" className="text-white no-underline hover:underline">Sign Up</a>
@@ -62,7 +78,6 @@ function Navbar(){
           <a href="#contact" className="text-white no-underline hover:underline">Contact</a>
           <Link to='/api/profile/owner' className='hover:underline text-white text-2xl'>Owner Profile</Link>
           <Link to='/api/profile/adopter' className='hover:underline text-white text-2xl'>Adopter Profile</Link>
-
         </div>
       </div>
 
@@ -76,11 +91,10 @@ function Navbar(){
           <a href="#contact" onClick={handleToggle} className="text-white no-underline block hover:underline">Contact</a>
           <a href='#login' onClick={handleToggle} className="text-white no-underline hover:underline">Sign Up</a>
           <a href='#login' onClick={handleToggle} className="text-white no-underline hover:underline">Login</a>
-
         </div>
       )}
     </nav>
   );
-};
+}
 
 export default Navbar;

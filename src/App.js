@@ -27,6 +27,8 @@ import Login from './components/Login/login.js';
 import LoginAdopt from './components/Login/loginAdopt.js'
 import LoginPetPage from './components/Login/loginPetsPage.js'
 
+import { AuthProvider } from './context/AuthContext';
+
 function HomePage() {
   return(
   <div className="header">
@@ -49,27 +51,28 @@ function HomePage() {
 
 function App() {
   return(
-  
-  <div className="header">
-        <Routes>
-          <Route path='/' element={<HomePage/>}></Route>
-          <Route path='/api/login' element={<Login/>}></Route>
-          <Route path='/api/pets/register/step1' element={<PetRegistrationStep1/>}></Route>
-          <Route path='/api/pets/register/step2' element={<PetRegistrationStep2/>}></Route>
-          <Route path='/api/pets/adopt/login' element={<LoginAdopt />}></Route>
-          <Route path='/api/pets/adopt' element={<PetGallery/>}></Route>
-          <Route path='/api/pets/' element={<LoginPetPage/>}></Route>
-          <Route path='/api/owner/register/signup' element={<OwnerRegistrationSignup/>}></Route>
-          <Route path='/api/owner/register/step1' element={<OwnerRegistrationStep1/>}></Route>
-          <Route path='/api/owner/register/step2' element={<OwnerRegistrationStep2/>}></Route>
-          <Route path='/api/adopter/register/step1' element={<AdopterRegistrationStep1/>}></Route>
-          <Route path='/api/adopter/register/step2' element={<AdopterRegistrationStep2/>}></Route>
-          <Route path='/api/adopter/register/step3' element={<AdopterRegistrationStep3/>}></Route>
-          <Route path='/api/event/schedule' element={<EventScheduler/>}></Route>
-          <Route path='/api/profile/owner'element={<OwnerProfile/>}></Route>
-          <Route path='/api/profile/adopter'element={<AdopterProfile/>}></Route>
-        </Routes>
-  </div>
+    <AuthProvider>
+      <div className="header">
+            <Routes>
+              <Route path='/' element={<HomePage/>}></Route>
+              <Route path='/api/login' element={<Login/>}></Route>
+              <Route path='/api/pets/register/step1' element={<PetRegistrationStep1/>}></Route>
+              <Route path='/api/pets/register/step2' element={<PetRegistrationStep2/>}></Route>
+              <Route path='/api/pets/adopt/login' element={<LoginAdopt />}></Route>
+              <Route path='/api/pets/adopt' element={<PetGallery/>}></Route>
+              <Route path='/api/pets/' element={<LoginPetPage/>}></Route>
+              <Route path='/api/owner/register/signup' element={<OwnerRegistrationSignup/>}></Route>
+              <Route path='/api/owner/register/step1' element={<OwnerRegistrationStep1/>}></Route>
+              <Route path='/api/owner/register/step2' element={<OwnerRegistrationStep2/>}></Route>
+              <Route path='/api/adopter/register/step1' element={<AdopterRegistrationStep1/>}></Route>
+              <Route path='/api/adopter/register/step2' element={<AdopterRegistrationStep2/>}></Route>
+              <Route path='/api/adopter/register/step3' element={<AdopterRegistrationStep3/>}></Route>
+              <Route path='/api/event/schedule' element={<EventScheduler/>}></Route>
+              <Route path='/api/profile/owner'element={<OwnerProfile/>}></Route>
+              <Route path='/api/profile/adopter'element={<AdopterProfile/>}></Route>
+            </Routes>
+      </div>
+    </AuthProvider>
   );
 };
 

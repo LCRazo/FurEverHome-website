@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import title from '../assets/AdopterRegistration.svg';
 // import next from '../assets/nextbutton.svg';
 import submit from '../assets/submitbutton.svg';
@@ -47,24 +47,22 @@ function Input({ label, name, value, onChange }) {
 
 
 function AdopterRegistrationStep2(){
-    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const navigate = useNavigate();
-
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     
-    const handleNext = () => {
-      if (!isFormValid) {
-        alert('Please fill out all fields!');
-        return;
-      }
+    //const handleNext = () => {
+    //  if (!isFormValid) {
+    //    alert('Please fill out all fields!');
+    //    return;
+    //  }
     
       setShowSuccessPopup(true);
       setTimeout(() => {
         navigate('/');
       }, 1500);
-    };
 
     const [formData, setFormData] = useState({
-        firstName: '',
+        firstName: '', //add profileID to track the created account
         lastName: '',
         livingSituation: '',
         householdSize: '',
@@ -79,6 +77,45 @@ function AdopterRegistrationStep2(){
         location: '',
         adopterPhoto: null,
     });
+
+    useEffect(() => {
+      const queryParams = new URLSearchParams(window.location.search);
+      const profileId = queryParams.get('profileId');
+      if (profileId) {
+        setFormData((prev) => ({ ...prev, profileId }));
+      }
+    }, []);
+
+    const handleNext = async () => {
+      if (!isFormValid) {
+        alert('Please fill out all fields!');
+        return;
+      }
+
+      const form = new FormData();
+      for (const key in formData) {
+        form.append(key, formData[key]);
+      }
+
+      try {
+        const response = await fetch('http://localhost:3001/api/adopter/register/step2', {
+          method: 'PUT', //use PUT for updating an existing profile, linked by profile id from step 1
+          body: form,
+        });
+        
+        if(!response.ok) {
+          const errorData = await response.json();
+          alert('Error: ${errorData.error}');
+          return;
+        }
+
+        alert('Background info updated!');
+        navigate('/api/adopter/register/step3');
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred. Please try again later.');
+      }
+    };
 
     const isFormValid = Object.values(formData).every(value => value !== '' && value !== null);
 
@@ -108,6 +145,41 @@ function AdopterRegistrationStep2(){
         const value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
         setFormData({ ...formData, phoneNumber: value });
     };
+
+    useEffect(() => {
+      const fetchProfile = async () => {
+        try {
+          const response = await fetch('http://localhost:3001/api/adopter/register/step2');
+          if (response.ok) {
+            const data = await response.json();
+            setFormData({
+              ...formData,
+              firstName: data.first_name || '',
+              lastName: data.lastName || '',
+              livingSituation: data.living_situation || '',
+              householdSize: data.num_of_household || '',
+              jobType: data.job_type || '',
+              jobTitle: data.job_title || '',
+              petCount: data.num_of_pets || '',
+              phoneNumber: data.phone_num || '',
+              address: data.address_street || '',
+              streetSuffix: data.address_suffix || '',
+              city: data.city || '',
+              state: data.state || '',
+              adopterPhoto: data.web_photo || null,
+            });
+          } else {
+            console.error('Failed to fetch profile');
+          }
+        } catch (error) {
+          console.error('Error fetching profile:', error);
+        }
+      };
+      
+      if (formData.username) {
+        fetchProfile();
+      }
+    }, [formData.username]);
 
     const livingOptions = ['House', 'Apartment', 'Recreational Vehicle (RV)','Condo'];
     const householdSize = ['1', '2','3','4','5','6+'];

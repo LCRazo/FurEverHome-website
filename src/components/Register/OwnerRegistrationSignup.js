@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import bcrypt from 'bcryptjs';
 import title from '../assets/OwnerRegistration.svg';
 import next from '../assets/nextbutton.svg';
 
@@ -25,12 +26,18 @@ function OwnerRegistrationSignup(){
         }
 
         try {
+            // Hash the password before sending it to the server
+            const hashedPassword = await bcrypt.hash(formData.password, 10);
+
             const response = await fetch('http://localhost:3001/api/owner/register/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    username: formData.username,
+                    password: hashedPassword,
+                }),
             });
 
             if (!response.ok) {
@@ -39,8 +46,11 @@ function OwnerRegistrationSignup(){
                 return;
             }
 
+            const responseData = await response.json();
+            const profileId = responseData.profileId; // Extract profileId from the response
+
             alert('Registration successful!');
-            navigate('/api/owner/register/step1');
+            navigate(`/api/owner/register/step1?profileId=${profileId}`); // Pass profileId as a query parameter
         } catch (error) {
             console.error('Error during registration:', error);
             alert('An error occurred. Please try again later.');
