@@ -213,9 +213,10 @@ app.use(express.json());
     const buildPath = path.join(__dirname, 'build');
     if (fs.existsSync(buildPath)) {
       app.use(express.static(buildPath));
-      app.get('*', (req, res) => {
-        res.sendFile(path.join(buildPath, 'index.html'));
-      });
+    // DO NOT use wildcard yet
+    // app.get('*', (req, res) => {
+    //   res.sendFile(path.join(buildPath, 'index.html'));
+    // });
     }
   }
 
