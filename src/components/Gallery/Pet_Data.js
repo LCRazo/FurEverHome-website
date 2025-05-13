@@ -7,6 +7,9 @@ import lindaImg from '../assets/Stock_Pet_Owner/Linda.jpg';
 import marthaImg from '../assets/Stock_Pet_Owner/Martha.jpeg';
 import jimImg from '../assets/Stock_Pet_Owner/Jim.jpeg';
 
+
+
+
 const pets = [
   {
     id: 1,

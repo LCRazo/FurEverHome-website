@@ -68,7 +68,7 @@ function EventScheduler(){
                 
                 {/*form + title */}
                 <div className='flex flex-col '>
-                <img src={title} className='pl-3 h-34 md:h-40'></img>
+                <img src={title} alt="title" className='pl-3 h-34 md:h-40'></img>
                 <p>Let’s get this event on the road by filling  out the following information!</p>
                 
                 <label className='text-left'>Location*</label>
@@ -118,7 +118,7 @@ function EventScheduler(){
                         className='' 
                         disabled={!isFormValid}
                     >
-                        <img src={Submit} className={!isFormValid ? 'opacity-50' : ''}></img>
+                        <img src={Submit} alt="submit button" className={!isFormValid ? 'opacity-50' : ''}></img>
                     </button>
             </div>
             {showSuccessPopup && (

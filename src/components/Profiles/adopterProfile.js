@@ -1,13 +1,15 @@
 import React from 'react';
+import MyPetsSection from '../Profiles/myPetsSection';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import title from '../assets/adopterProfile.svg';
 import tobyImg from '../assets/Stock_Pet_Profile_Images/toby-dalmatian.svg';
-import moxieImg from '../assets/Stock_Pet_Profile_Images/mochi-cat.svg';
-
-
-import next from '../assets/nextbutton.svg';
+// import moxieImg from '../assets/Stock_Pet_Profile_Images/mochi-cat.svg';
+import dogPark from '../assets/Profile/dog-park.jpg';
+// import dogPark1 from '../assets/Profile/dog-park-logo.jpg';
+// import next from '../assets/nextbutton.svg';
 import marthaImg from '../assets/Stock_Pet_Owner/Martha.jpeg';
+import pets from '../Gallery/Pet_Data.js';
 
 function AdopterProfile(){
     const [isEditing, setIsEditing] = useState(false);
@@ -21,6 +23,7 @@ function AdopterProfile(){
         jobStatus: 'Full-Time'
     });
     const [tempFormData,setTempFormData] = useState(formData);
+    const [usePets, setUsePets] = useState(pets);
     // const navigate = useNavigate();
 
     // const handleNext = () => {
@@ -92,7 +95,6 @@ function AdopterProfile(){
                 )}
                 </div>
 
-
                 <label className="block text-white text-2xl font-bold mb-1">Owner Information</label>
 
                 {/* Input Fields */}
@@ -162,38 +164,9 @@ function AdopterProfile(){
 
             {/* Second Column */}
             <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                <label className="block text-white text-2xl font-bold mb-4">My Pets</label>
+                {/* <label className="block text-white text-2xl font-bold mb-4">My Applications</label> */}
+                <MyPetsSection pets={usePets} />
 
-                {/* Pet 1 */}
-                <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
-                    <img src={tobyImg} alt="Toby" className="w-48 h-22 rounded-xl object-cover mr-4" />
-                    <div className="text-left">
-                    <p className="text-black font-bold text-xl flex items-center gap-2">
-                        Toby <span className="text-blue-900 text-2xl font-bold">♂</span>
-                    </p>
-                    <p className="text-gray-700">Dalmatian</p>
-                    {/* extra pet pictures */}
-                    <div className="flex mt-2 space-x-2">
-                        <img src={tobyImg} alt="spot1" className="w-8 h-8 rounded-full" />
-                        <img src={tobyImg} alt="spot2" className="w-8 h-8 rounded-full" />
-                    </div>
-                    </div>
-                </div>
-
-                {/* Pet 2 */}
-                <div className="bg-white p-4 rounded-lg shadow-md flex">
-                    <img src={moxieImg} alt="Moxie" className="w-48 h-26 rounded-xl object-cover mr-4" />
-                    <div className="text-left">
-                    <p className="text-black font-bold text-xl flex items-center gap-2">
-                        Moxie <span className="text-pink-900 text-2xl font-bold">♀</span>
-                    </p>
-                    <p className="text-gray-700">Mixed</p>
-                    <div className="flex mt-2 space-x-2">
-                        <img src={moxieImg} alt="meme1" className="w-8 h-8 rounded-full" />
-                        <img src={moxieImg} alt="meme2" className="w-8 h-8 rounded-full" />
-                    </div>
-                    </div>
-                </div>
             </div>
 
 
@@ -219,12 +192,31 @@ function AdopterProfile(){
                 <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
                     <label className="block text-white text-2xl font-bold mb-2">My Meet Ups</label>
                     {/* <p className="text-white text-md">No upcoming meet ups</p> */}
+                    <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                        <div className="text-left">
+                        <p className="text-black font-semibold text-xl flex items-center gap-2">
+                            <img src={tobyImg} alt="pet" className="w-8 h-8 rounded-full" />
+                            Meet Up for Toby | June 15th - 2:00 pm
+                            <img src={tobyImg} alt="meme1" className="items-right w-8 h-8 rounded-full" />
+                            {/* Toby <span className="text-blue-900 text-2xl font-bold">♂</span> */}
+                        </p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Events */}
                 <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
-                    <label className="block text-white text-2xl font-bold mb-2">My Events</label>
+                    <label className="block text-white text-2xl font-bold mb-2"> Events</label>
                     {/* <p className="text-white text-md">No upcoming events</p> */}
+                    <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                        <div className="text-left">
+                        <p className="text-black font-semibold text-xl flex items-center gap-2">
+                            <img src={dogPark} alt="Event Flyer" className="w-8 h-8 rounded-full" />
+                            St. Luther Adoption Day | 304 Gamboa Avenue, McAllen, TX | June 2nd - 9:00 am
+                            {/* Toby <span className="text-blue-900 text-2xl font-bold">♂</span> */}
+                        </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

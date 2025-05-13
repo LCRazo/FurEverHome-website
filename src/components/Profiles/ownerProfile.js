@@ -4,6 +4,13 @@ import { useEffect, useState } from 'react';
 import title from '../assets/ownerProfile.svg';
 // import next from '../assets/nextbutton.svg';
 import jimImg from '../assets/Stock_Pet_Owner/Jim.jpeg';
+import tobyImg from '../assets/Stock_Pet_Profile_Images/toby-dalmatian.svg';
+import moxieImg from '../assets/Stock_Pet_Profile_Images/mochi-cat.svg';
+import dogPark from '../assets/Profile/dog-park.jpg';
+// import dogPark1 from '../assets/Profile/dog-park-logo.jpg';
+import marthaImg from '../assets/Stock_Pet_Owner/Martha.jpeg';
+import MyPetsSection from '../Profiles/myPetsSection';
+import pets from '../Gallery/Pet_Data';
 
 // Example login handler
 // const handleLogin = async () => {
@@ -50,6 +57,7 @@ function OwnerProfile(){
 //         petGender: ''
 // });
     const [isEditing, setIsEditing] = useState(false);
+    const [usePets, setUsePets] = useState(pets);
     const [formData, setFormData] = useState({
         firstName: 'John',
         lastName: 'Smith',
@@ -103,33 +111,32 @@ function OwnerProfile(){
             <img src={title} alt="title" className="mx-auto w-1/2 mb-6" />
             
             <div className="grid grid-cols-3 gap-6">
-
                 {/* First Column */}
                 <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                <div className="flex justify-end space-x-3 mb-4">
-                    {isEditing ? (
-                        <>
-                        <button
-                            onClick={handleCancel}
+                    <div className="flex justify-end space-x-3 mb-4">
+                        {isEditing ? (
+                            <>
+                            <button
+                                onClick={handleCancel}
+                                className="text-white text-sm underline"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleSave}
+                                className="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-1 rounded"
+                            >
+                                Save
+                            </button>
+                            </>
+                        ) : (
+                            <button
+                            onClick={handleEdit}
                             className="text-white text-sm underline"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={handleSave}
-                            className="bg-green-600 hover:bg-green-700 text-white text-sm px-3 py-1 rounded"
-                        >
-                            Save
-                        </button>
-                        </>
-                    ) : (
-                        <button
-                        onClick={handleEdit}
-                        className="text-white text-sm underline"
-                        >
-                        Edit
-                        </button>
-                    )}
+                            >
+                            Edit
+                            </button>
+                        )}
                     </div>
 
 
@@ -202,46 +209,65 @@ function OwnerProfile(){
 
                 {/* Second Column */}
                 <div className="bg-c4b2 p-6 w-full max-w-lg mx-auto rounded-xl shadow-md">
-                    <label className="block text-white text-2xl font-bold mb-2">My Pets</label>
-                    {/* default when there are no listed pets */}
-                    {/* <label className="block text-white font-semibold mb-2">No Pets Need Rehoming</label> */}
-                    {/* <input name="name" className="block w-full mb-6 p-2 text-black rounded" required /> */}
+                {/* <label className="block text-white text-2xl font-bold mb-4">My Applications</label> */}
+                <MyPetsSection pets={usePets} />
 
-                    {/* <div className="grid grid-cols-2 gap-4">
-                        
-                    </div> */}
                 </div>
+                    
+
 
                 {/* Third Column (2 Rows) */}
-                <div className="flex flex-col gap-12 items-center px-4 py-12">
-                    {/* Row 1 - Notifications */}
-                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
-                        <label className="block text-white text-3xl font-bold mb-4">
-                        My Notifications
-                        </label>
-                        {/* <p className="text-white font-medium">No New Notifications</p> */}
+                <div className="flex flex-col gap-10 justify-start px-2">
+                    {/* Notifications */}
+                    <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                        <label className="block text-white text-2xl font-bold mb-2">My Notifications</label>
+                        {/* <p className="text-white text-md">No new notifications</p> */}
+                        <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                            <div className="text-left">
+                                <p className="text-black font-semibold text-xl flex items-center gap-2">
+                                    <img src={marthaImg} alt="adopter" className="w-8 h-8 rounded-full" />
+                                    Martha liked Toby
+                                    <img src={tobyImg} alt="meme1" className="items-right w-8 h-8 rounded-full" />
+                                    {/* Toby <span className="text-blue-900 text-2xl font-bold">♂</span> */}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+
+                    {/* Meet Ups */}
+                    <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                        <label className="block text-white text-2xl font-bold mb-2">My Meet Ups</label>
+                        {/* <p className="text-white text-md">No upcoming meet ups</p> */}
+                        <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                            <div className="text-left">
+                            <p className="text-black font-semibold text-xl flex items-center gap-2">
+                                <img src={tobyImg} alt="pet" className="w-8 h-8 rounded-full" />
+                                Meet Up for Toby | June 15th - 2:00 pm
+                                <img src={tobyImg} alt="meme1" className="items-right w-8 h-8 rounded-full" />
+                                {/* Toby <span className="text-blue-900 text-2xl font-bold">♂</span> */}
+                            </p>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Row 2 - Meet Ups */}
-                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
-                        <label className="block text-white text-3xl font-bold mb-4">
-                        My Meet Ups
-                        </label>
-                        {/* <p className="text-white font-medium">No Upcoming Meet Ups</p> */}
+                    {/* Events */}
+                    <div className="bg-c4b2 p-8 w-full max-w-md rounded-xl shadow-xl min-h-[270px]">
+                        <label className="block text-white text-2xl font-bold mb-2"> Events</label>
+                        {/* <p className="text-white text-md">No upcoming events</p> */}
+                        <div className="bg-white p-4 rounded-lg mb-6 shadow-md flex">
+                            <div className="text-left">
+                            <p className="text-black font-semibold text-xl flex items-center gap-2">
+                                <img src={dogPark} alt="Event Flyer" className="w-8 h-8 rounded-full" />
+                                St. Luther Adoption Day | 304 Gamboa Avenue, McAllen, TX | June 2nd - 9:00 am
+                                {/* Toby <span className="text-blue-900 text-2xl font-bold">♂</span> */}
+                            </p>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Row 3 - Events */}
-                    <div className="bg-c4b2 w-full max-w-3xl p-10 rounded-xl shadow-2xl">
-                        <label className="block text-white text-3xl font-bold mb-4">
-                        Upcoming Events
-                        </label>
-                        {/* <p className="text-white font-medium">No Upcoming Events</p> */}
-                    </div>
                 </div>
-
             </div>
-
-
             
             {/* <div className="pt-4 flex justify-center">
                 <button type="button" className="block text-left text-white bottom-right"onClick={handleNext}>
