@@ -29,7 +29,7 @@ function OwnerRegistrationSignup(){
             // Hash the password before sending it to the server
             const hashedPassword = await bcrypt.hash(formData.password, 10);
 
-            const response = await fetch('http://localhost:3001/api/owner/register/signup', {
+            const response = await fetch('/api/owner/register/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

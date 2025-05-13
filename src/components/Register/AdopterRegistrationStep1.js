@@ -25,7 +25,7 @@ function AdopterRegistrationStep1(){
         }
         
         try{
-            const response = await fetch('http://localhost:3001/api/adopter/register/step1', {
+            const response = await fetch('/api/adopter/register/step1', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

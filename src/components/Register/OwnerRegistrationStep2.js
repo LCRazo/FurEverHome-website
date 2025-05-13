@@ -75,7 +75,7 @@ function OwnerRegistrationStep2(){
     useEffect(() => {
       const fetchProfile = async() => {
         try{
-          const response = await fetch (`http://localhost:3001/api/owner/register/step2/${formData.profileId}`);
+          const response = await fetch (`/api/owner/register/step2/${formData.profileId}`);
           if(response.ok) {
             const data = await response.json();
             setFormData({

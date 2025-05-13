@@ -98,7 +98,7 @@ function AdopterRegistrationStep2(){
       }
 
       try {
-        const response = await fetch('http://localhost:3001/api/adopter/register/step2', {
+        const response = await fetch('/api/adopter/register/step2', {
           method: 'PUT', //use PUT for updating an existing profile, linked by profile id from step 1
           body: form,
         });
@@ -149,7 +149,7 @@ function AdopterRegistrationStep2(){
     useEffect(() => {
       const fetchProfile = async () => {
         try {
-          const response = await fetch('http://localhost:3001/api/adopter/register/step2');
+          const response = await fetch('/api/adopter/register/step2');
           if (response.ok) {
             const data = await response.json();
             setFormData({
